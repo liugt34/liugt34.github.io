@@ -5,7 +5,7 @@ $code-block {
   overflow auto
   margin 20px 0
   padding 0
-  font-size 0.96rem
+  font-size 1rem
   line-height 1.5rem
   color var(--highlight-foreground)
   background var(--highlight-background)
@@ -13,7 +13,11 @@ $code-block {
 
 
 pre, code {
-  font-family 'Courier', Courier, monospace
+  if (hexo-config('code_block.custom_font.enable') && hexo-config('code_block.custom_font.font_family')) {
+    font-family hexo-config('code_block.custom_font.font_family'), "Ubuntu Mono", Courier, monospace
+  } else {
+    font-family "Ubuntu Mono", Courier, monospace
+  }
 }
 
 code {
@@ -28,6 +32,7 @@ code {
 pre {
   @extend $code-block
   padding 10px
+  tab-size 4
 
   code {
     padding 0
@@ -41,8 +46,32 @@ pre {
   @extend $code-block
   border-radius $redefine-border-radius-large-bottom
   padding-bottom 5px
+  overflow: auto
+  margin 0 !important
   if (hexo-config('code_block.style') == 'mac') {
     border-top 1px solid var(--shadow-color-1)
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    border: 3px solid rgba(183, 183, 183, 0.3);
+  }
+
+  &::-webkit-scrollbar {
+    width 6px
+    height 6px
+    transition all 0.2s ease
+    display block
+  }
+  
+  &::-webkit-scrollbar-track {
+    background transparent
+    border none
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    border: 3px solid rgba(183, 183, 183, 0);
+    transition all 0.2s ease
   }
 
   pre {

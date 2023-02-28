@@ -3,6 +3,8 @@ $friend-link-item-height-tablet = 68px
 $friend-link-item-interval = 16px
 $friend-link-item-border-radius = 9px
 
+@import "../../common/variables"
+
 .page-template-container {
 
   redefine-container(false, 0, 0, 30px, 30px)
@@ -28,10 +30,23 @@ $friend-link-item-border-radius = 9px
   
   .friends-link-container {
 
+    .friend-links-title {
+      color var(--second-text-color)
+      margin-top -10px
+
+      .article-title-regular {
+        font-size 3rem
+        line-height 1
+        font-weight bold
+        color var(--second-text-color)
+      }
+    }
+
     .friends-link-list {
       position relative
       display: flex;
       flex-wrap: wrap;
+      margin-bottom 1rem
 
 
       .friends-link-item {

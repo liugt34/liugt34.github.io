@@ -5,7 +5,7 @@
   <a title="Chinese" href="README_zh-TW.md">繁中</a>
 </div>
 
-<a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/197350938-3d27f054-04e6-4e7a-8bce-94666b56e822.png"  alt="Redefine"></a>
+<a href="https://redefine.ohevan.com"><img align="center" src="https://user-images.githubusercontent.com/68590232/218364072-45dd3a00-ae5e-4e25-8823-cea59fc73e36.png"  alt="Redefine"></a>
 
 
 
@@ -13,7 +13,7 @@
 
 "Redefine" hexo theme is **a simple & fast & pure theme**, but with **no compromise**. This theme contains lots of widely use functions and great web design.
 
-[![NPM version](https://img.shields.io/npm/v/hexo-theme-redefine?color=red&logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm](https://img.shields.io/npm/dw/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![Github License](https://img.shields.io/github/license/EvanNotFound/hexo-theme-redefine.svg?style=flat-square)](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/LICENSE) [![Required Hexo version](https://img.shields.io/badge/hexo-%3E=5.0.0-blue?style=flat-square&logo=hexo)](https://hexo.io) [![Node.js Version](https://img.shields.io/badge/node-%3E=12.0-success.svg?style=flat-square&logo=Node.js&longCache=true)](https://hexo.io)
+[![NPM version](https://img.shields.io/npm/v/hexo-theme-redefine?color=red&logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm](https://img.shields.io/npm/dw/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![npm-total](https://img.shields.io/npm/dt/hexo-theme-redefine?logo=npm&style=flat-square)](https://www.npmjs.com/package/hexo-theme-redefine) [![Github License](https://img.shields.io/github/license/EvanNotFound/hexo-theme-redefine.svg?style=flat-square)](https://github.com/EvanNotFound/hexo-theme-redefine/blob/main/LICENSE) [![Required Hexo version](https://img.shields.io/badge/hexo-%3E=5.0.0-blue?style=flat-square&logo=hexo)](https://hexo.io) [![Node.js Version](https://img.shields.io/badge/node-%3E=12.0-success.svg?style=flat-square&logo=Node.js&longCache=true)](https://hexo.io)
 
 
 
@@ -26,8 +26,11 @@
 
 ## 🌐 Online Demo
 
-- [Anonymous Land](https://ohevan.com)
+- [EvanNotFound's Blog](https://ohevan.com)
 - [Theme Redefine Demo](https://redefine.ohevan.com)
+- [Redefine Theme Showcase](https://redefine.ohevan.com/showcase)
+
+If you are also using Redefine, please go to [Redefine Theme Showcase](https://redefine.ohevan.com/showcase) to add your blog link.
 
 ## ⛰️ Some functions
 

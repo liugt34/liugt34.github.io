@@ -3,6 +3,8 @@ $pc-search-icon-font-size = 1.5rem
 $menu-bar-line-height = 2.5px
 $logo-image-box-width = 46px
 
+@import "../../common/variables"
+
 .menu-wrapper {
   font-family "Optima Medium", sans-serif
   width 100%
@@ -131,12 +133,17 @@ $logo-image-box-width = 46px
 
           .menu-item {
             float left
-            padding 5px
+            //padding 5px
             position relative
             margin-left 30px
             font-size 1rem
             cursor pointer
             color var(--default-text-color)
+
+            a {
+              display block
+              padding 5px
+            }
 
             &:first-child {
               margin-left 0
@@ -194,7 +201,7 @@ $logo-image-box-width = 46px
               -webkit-transform translate(-50%, 0)
               -o-transform translate(-50%, 0)
               transform translate(-50%, 0)
-              margin-top 8px
+              margin-top 0px
               width auto
               text-align: center;
               list-style:none;
