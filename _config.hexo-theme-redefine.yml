@@ -209,7 +209,7 @@ comment:
   # See: https://github.com/gitalk/gitalk
   gitalk:
     github_id: liugt34 # GitHub repo owner
-    repository: https://github.com/liugt34/HelloStartupReadingNotes # Repository name to store issues
+    repository: https://github.com/liugt34/liugt34.github.io # Repository name to store issues
     client_id: c32452ebdda9a2fcd6a1 # GitHub Application Client ID
     client_secret: 92e94dc8020341b1b71a4d164066180d2aa65dd8 # GitHub Application Client Secret
 
