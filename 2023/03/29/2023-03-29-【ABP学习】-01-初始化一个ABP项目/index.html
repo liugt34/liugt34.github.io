@@ -9,18 +9,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2023/02/15/2023-02-15-postgresql-import-export-shapefile/"/>
+    <link rel="canonical" href="http://example.com/2023/03/29/2023-03-29-【abp学习】-01-初始化一个abp项目/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Postgresql Import Export Shapefile">
+    <meta property="og:title" content="【ABP学习】01 初始化一个ABP项目">
     <meta property="og:description" content="Hexo Theme Redefine">
-    <meta property="og:url" content="http://example.com2023/02/15/2023-02-15-PostgreSQL-Import-Export-Shapefile/">
+    <meta property="og:url" content="http://example.com2023/03/29/2023-03-29-【ABP学习】-01-初始化一个ABP项目/">
     <meta property="og:image" content="/images/redefine-logo.svg">
     <meta property="og:site_name" content="葛覃谷">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Postgresql Import Export Shapefile">
+    <meta name="twitter:title" content="【ABP学习】01 初始化一个ABP项目">
     <meta name="twitter:description" content="Hexo Theme Redefine">
     <meta name="twitter:image" content="/images/redefine-logo.svg">
     <!--- Icon Part-->
@@ -31,7 +31,7 @@
     
     <title>
         
-            Postgresql Import Export Shapefile -
+            【ABP学习】01 初始化一个ABP项目 -
         
         葛覃谷
     </title>
@@ -211,7 +211,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">Postgresql Import Export Shapefile</h1>
+                    <h1 class="article-title-regular">【ABP学习】01 初始化一个ABP项目</h1>
                 </div>
             
                 
@@ -233,8 +233,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2023-02-15 03:33</span>
-        <span class="mobile">2023-02-15 03:33</span>
+        <span class="pc">2023-03-29 09:49:28</span>
+        <span class="mobile">2023-03-29 09:49</span>
         <span class="hover-info">Created</span>
     </span>
     
@@ -252,11 +252,11 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Postgresql/">Postgresql</a>&nbsp;
+                        <a href="/categories/ASP-NET-Core/">ASP.NET Core</a>&nbsp;
                     </li>
                 
                     <li>
-                        &gt; <a href="/categories/Postgresql/PostGIS/">PostGIS</a>&nbsp;
+                        &gt; <a href="/categories/ASP-NET-Core/ABP/">ABP</a>&nbsp;
                     </li>
                 
             </ul>
@@ -268,7 +268,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/shapefile/">shapefile</a>&nbsp;
+                        <a href="/tags/aspnetcore/">aspnetcore</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/abp/">abp</a>&nbsp;
                     </li>
                 
             </ul>
@@ -291,161 +295,76 @@
             
 
             <div class="article-content markdown-body">
-                <p>some times we want to import a shapefile to the postgresql or export shapefile from postgresql, so we can do it with the bash command </p>
-<h1 id="import"><a href="#import" class="headerlink" title="import"></a>import</h1><p><strong>template</strong></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shp2pgsql -s [&lt;srid&gt;] -a -W GBK [&lt;file_name&gt;] | psql -h [&lt;server_host&gt;] -U [&lt;user_name&gt;] -d [&lt;db_name&gt;] -p 5432</span><br></pre></td></tr></table></figure></div>
+                <p>ABP是一个开源且文档友好的应用程序框架。ABP不仅仅是一个框架，它还提供了一个最徍实践的基于领域驱动设计(DDD)的体系结构模型，可以支持.net framework和.net core两种技术流派。本人不太喜欢这种洋葱框架，无奈用的人太多，还是决定抽出时间学习一下。卷起来…😅</p>
+<h1 id="安装-ABP-CLI"><a href="#安装-ABP-CLI" class="headerlink" title="安装 ABP CLI"></a>安装 ABP CLI</h1><p>如果之前没有安装过ABP CLI，请先安装</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool install -g Volo.Abp.Cli</span><br></pre></td></tr></table></figure></div>
 
-<p><strong>demo</strong></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shp2pgsql -s 3857 -d -W GBK nyc_homicides.shp  | psql -h 192.168.1.1 -U postgres -d mydb -p 5433</span><br></pre></td></tr></table></figure></div>
+<p>安装完毕后，可以查看是否安装成功</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool list -g</span><br></pre></td></tr></table></figure></div>
 
-<p><strong>参数</strong></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-s</td>
-<td>空间参考标识符（<a class="link"   target="_blank" rel="noopener" href="https://epsg.io/" >SRID <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>）</td>
-</tr>
-<tr>
-<td>-d</td>
-<td>重新建立表，并插入数据</td>
-</tr>
-<tr>
-<td>-a</td>
-<td>在同一个表中增加数据</td>
-</tr>
-<tr>
-<td>-c</td>
-<td>建立新表，并插入数据</td>
-</tr>
-<tr>
-<td>-p</td>
-<td>只创建表</td>
-</tr>
-<tr>
-<td>-g</td>
-<td>指定要创建的表的空间字段名称(在追加数据时有用)</td>
-</tr>
-<tr>
-<td>-D</td>
-<td>使用dump方式，比缺省生成sql的速度快</td>
-</tr>
-<tr>
-<td>-G</td>
-<td>使用类型geography</td>
-</tr>
-<tr>
-<td>-k</td>
-<td>保持标识符（列名，模式，属性）大小写。</td>
-</tr>
-<tr>
-<td>-i</td>
-<td>将所有整型都转为标准的32-bit整数</td>
-</tr>
-<tr>
-<td>-I</td>
-<td>在几何列上建立GIST索引</td>
-</tr>
-<tr>
-<td>-S</td>
-<td>生成简单几何，而非MULTI几何</td>
-</tr>
-<tr>
-<td>-t</td>
-<td>指定几何的维度</td>
-</tr>
-<tr>
-<td>-w</td>
-<td>指定输出格式为WKT</td>
-</tr>
-<tr>
-<td>-W</td>
-<td>输入的dbf文件编码方式</td>
-</tr>
-<tr>
-<td>-N</td>
-<td>指定几何为空时的操作</td>
-</tr>
-<tr>
-<td>-n</td>
-<td>只导入dbf文件</td>
-</tr>
-<tr>
-<td>-T</td>
-<td>指定表的表空间</td>
-</tr>
-<tr>
-<td>-X</td>
-<td>指定索引的表空间</td>
-</tr>
-<tr>
-<td>-?</td>
-<td>帮助</td>
-</tr>
-</tbody></table>
-<h1 id="export"><a href="#export" class="headerlink" title="export"></a>export</h1><p><strong>template export all data</strong></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgsql2shp [&lt;options&gt;] &lt;database&gt; [&lt;schema&gt;.]&lt;table&gt;</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329163535416.png"
+                      alt="image-20230329163535416"
+                ></p>
+<p>如果之前已经安装过ABP CLI，可对其进行更新</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool update -g volo.abp.cli</span><br></pre></td></tr></table></figure></div>
 
-<p><strong>demo</strong></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgsql2shp -f E:/shp/nyc_streets.shp -h localhost -u postgres -P 123456 -p 5433 Testpg  public.nyc_streets;</span><br></pre></td></tr></table></figure></div>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329164245467.png"
+                      alt="image-20230329164245467"
+                ></p>
+<h1 id="使用-ABP-CLI创建项目"><a href="#使用-ABP-CLI创建项目" class="headerlink" title="使用 ABP CLI创建项目"></a>使用 ABP CLI创建项目</h1><p>使用 apb new 创建项目</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abp new YourProjectName -t app -dbms=SqlServer -csf</span><br></pre></td></tr></table></figure></div>
 
-
-<p><strong>template export data use query</strong></p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgsql2shp [&lt;options&gt;] &lt;database&gt; &lt;query&gt;</span><br></pre></td></tr></table></figure></div>
-
-<p> <strong>demo</strong></p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgsql2shp -f E:/shp/nyc_streets.shp -h localhost -u postgres -P 123456 -p 5433 Testpg  <span class="string">&quot;SELECT * from  nyc_streets&quot;</span>;</span><br></pre></td></tr></table></figure></div>
-
-
-<p><strong>parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-f <filename></td>
-<td>导出的shp文件名称</td>
-</tr>
-<tr>
-<td>-h <host></td>
-<td>主机地址</td>
-</tr>
-<tr>
-<td>-p <port></td>
-<td>端口号</td>
-</tr>
-<tr>
-<td>-u <user></td>
-<td>用户名</td>
-</tr>
-<tr>
-<td>-P <password></td>
-<td>密码</td>
-</tr>
-<tr>
-<td>-g <geometry column></td>
-<td>In the case of tables with multiple geometry columns, the geometry column to use when writing the shape file.</td>
-</tr>
-<tr>
-<td>-b</td>
-<td>Use a binary cursor. This will make the operation faster, but will not work if any NON-geometry attribute in the table lacks a cast to text.</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>Raw mode. Do not drop the gid field, or escape column names.</td>
-</tr>
-<tr>
-<td>-m <filename></td>
-<td>Remap identifiers to ten character names. The content of the file is lines of two symbols separated by a single white space and no trailing or leading space.</td>
-</tr>
-</tbody></table>
+<p><strong><code>-csf</code></strong>     –create-solution-folder  表示创建新文件夹</p>
+<p><strong><code>-t</code></strong>          –template  表示模板，目前支持 <strong><code>app</code></strong>  <strong><code>app-nolayers</code></strong>  <strong><code>module</code></strong>  <strong><code>console</code></strong>  **<code>maui</code>**，默认 <code>app</code></p>
+<p><strong><code>-u</code></strong>          –ui 表示UI框架，目前支持 <strong><code>mvc</code></strong>  <strong><code>angular</code></strong>  <strong><code>blazor</code></strong>  <strong><code>blazor-server</code></strong>  <strong><code>none</code></strong> ，默认 mvc</p>
+<p><strong><code>-d</code></strong>          –database-provider 表示数据库框架，目前支持 <strong><code>ef</code></strong>  **<code>mongodb</code>**，默认 ef</p>
+<p><strong><code>-dbms</code></strong>    –database-management-system  表示数据库类型，目前支持 <strong><code>SqlServer</code></strong>   <strong><code>MySQL</code></strong>   <strong><code>SQLite</code></strong>   <strong><code>Oracle</code></strong>   <strong><code>PostgreSQL</code></strong> ，默认 SqlServer</p>
+<p><strong><code>-cs</code></strong>         –connection-string 设置数据库连接串</p>
+<p><strong><code>--theme</code></strong>  指定主题，目前支持 <code>leptonx-lite</code>  <code>basic</code> ，默认 leptonx-lite</p>
+<p>更多命令说明请参考官方文档  <a class="link"   target="_blank" rel="noopener" href="https://docs.abp.io/en/abp/latest/CLI" >CLI | Documentation Center | ABP.IO <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>运行命令，会在当前文件夹下面创建项目。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329173352318.png"
+                      alt="image-20230329173352318"
+                ></p>
+<h1 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h1><p>用 Visual Studio 2022 打开解决方案</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329173623043.png"
+                      alt="image-20230329173623043"
+                ></p>
+<p>设置 <strong>ProductManagement.Web</strong> 为启动项，然后F5运行项目，发现项目无法运行，会报错</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329173744525.png"
+                      alt="image-20230329173744525"
+                ></p>
+<p><strong>原因是因为数据库尚未初始化。</strong> 找到项目 <strong>ProductManagement.DbMigrator</strong> 右键设置为启动项，F5运行，初始化数据库。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329173943437.png"
+                      alt="image-20230329173943437"
+                ></p>
+<p>运行完毕后，重新将 <strong>ProductManagement.Web</strong>设置为启动项，再次运行</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329174101656.png"
+                      alt="image-20230329174101656"
+                ></p>
+<p>登录系统，默认账号密码为  admin  &#x2F;  1q2w3E*</p>
+<p>至此，一个ABP项目初始化完毕。</p>
 
             </div>
 
@@ -453,11 +372,11 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：Postgresql Import Export Shapefile</li>
+        <li>Post title：【ABP学习】01 初始化一个ABP项目</li>
         <li>Post author：TomLiu</li>
-        <li>Create time：2023-02-15 03:33:00</li>
+        <li>Create time：2023-03-29 09:49:28</li>
         <li>
-            Post link：https://tomsweet.github.io/2023/02/15/2023-02-15-PostgreSQL-Import-Export-Shapefile/
+            Post link：https://tomsweet.github.io/2023/03/29/2023-03-29-【ABP学习】-01-初始化一个ABP项目/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -472,7 +391,11 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/shapefile/">#shapefile</a>&nbsp;
+                            <a href="/tags/aspnetcore/">#aspnetcore</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/abp/">#abp</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -483,29 +406,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2023/03/13/2023-03-13-Use-CSharp-WinForms-Chart-Component/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">Use C# WinForms Chart Component</span>
-                                    <span class="post-nav-item">Prev posts</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2023/01/25/2023-01-25-Hello-Hexo/"
+                            href="/2023/03/13/2023-03-13-Use-CSharp-WinForms-Chart-Component/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Hello Hexo!</span>
+                                    <span class="post-nav-title-item">Use C# WinForms Chart Component</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -583,8 +491,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">Postgresql Import Export Shapefile</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#import"><span class="nav-text">import</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#export"><span class="nav-text">export</span></a></li></ol>
+        <div class="page-title">【ABP学习】01 初始化一个ABP项目</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ABP-CLI"><span class="nav-text">安装 ABP CLI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-ABP-CLI%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-text">使用 ABP CLI创建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE"><span class="nav-text">运行项目</span></a></li></ol>
 
     </div>
 </div>
