@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="TomLiu">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2023/04/27/2023-04-27-【abp学习】-02-使用apb进行crud操作/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="【ABP学习】02 使用ABP进行CRUD操作">
+    <meta property="og:description" content="Hexo Theme Redefine">
+    <meta property="og:url" content="http://example.com2023/04/27/2023-04-27-【ABP学习】-02-使用APB进行CRUD操作/">
+    <meta property="og:image" content="/images/redefine-logo.svg">
+    <meta property="og:site_name" content="葛覃谷">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="【ABP学习】02 使用ABP进行CRUD操作">
+    <meta name="twitter:description" content="Hexo Theme Redefine">
+    <meta name="twitter:image" content="/images/redefine-logo.svg">
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            【ABP学习】02 使用ABP进行CRUD操作 -
+        
+        葛覃谷
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/assets/fonts.css">
+
+    
+    
+    
+    
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#ffffff","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"葛之覃兮，施于中谷。<br/>维叶萋萋，黄鸟于飞。<br/>集于灌木，其鸣喈喈。","custom_font":{"enable":false,"font_family":null,"font_url":null}},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac","custom_font":{"enable":false,"font_family":null,"font_url":null}},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"1.1.3","friend_links":{"columns":2},"home_article":{"date_format":"auto","category":{"enable":true,"limit":3},"tag":{"enable":true,"limit":3}}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="menu-wrapper">
+    
+    <div class="menu-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                葛覃谷
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        HOME
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        ARCHIVES
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="menu-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                HOME
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                ARCHIVES
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">【ABP学习】02 使用ABP进行CRUD操作</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">TomLiu</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-04-27 09:02:28</span>
+        <span class="mobile">2023-04-27 09:02</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="pc">2023-04-28 02:14:07</span>
+            <span class="mobile">2023-04-28 02:14</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/ASP-NET-Core/">ASP.NET Core</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/ASP-NET-Core/ABP/">ABP</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/aspnetcore/">aspnetcore</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/abp/">abp</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <p>使用CLI创建一个ABP项目，如果你不清楚如何处理，请参考上一篇文章  <a class="link"   target="_blank" rel="noopener" href="https://blog.getangu.com/2023/03/29/2023-03-29-%E3%80%90ABP%E5%AD%A6%E4%B9%A0%E3%80%91-01-%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AAABP%E9%A1%B9%E7%9B%AE/" >《初始化一个ABP项目》 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abp new ProductManagement -t app</span><br></pre></td></tr></table></figure></div>
+
+<p>运行项目 ProductManagement.DbMigrator ，初始化数据库，这里我们使用系统自带的 LocalDb</p>
+<h1 id="定义领域对象"><a href="#定义领域对象" class="headerlink" title="定义领域对象"></a>定义领域对象</h1><p>这里我们创建两个实体对象Product和Category，一个枚举对象ProductStockState</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230427171047233.png"
+                      alt="image-20230427171047233"
+                ></p>
+<p>实体被定义在领域层，ABP将领域层划分为两个项目</p>
+<ul>
+<li><p><strong>ProductManagement.Domain</strong>                     实体对象、值对象、领域服务、仓库接口和其他核心相关类</p>
+</li>
+<li><p><strong>ProductManagement.Domain.Shared</strong>      定义一些共享类型，如枚举和常量</p>
+</li>
+</ul>
+<h2 id="Category"><a href="#Category" class="headerlink" title="Category"></a>Category</h2><p>在项目 <em>ProductManagement.Domain</em> 中创建 Categories文件夹，在文件夹中创建Category类</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ProductManagement.Categories</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Category</span> : <span class="title">AuditedAggregateRoot</span>&lt;<span class="title">Guid</span>&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><em><strong>AggregateRoot</strong></em> 是一种特殊的实体类型被用来创建聚合根。聚合根是DDD里面的概念，这里我们不做讨论。</p>
+<p><em><strong>AuditedAggregateRoot</strong></em> 在AggregateRoot 基础上添加了以下属性  CreationTime , CreatorId , LastModificationTime , LastModifierId。 </p>
+<p>ABP自动为这些属性赋值，如CreationTime 为当前系统时间，CreatorId 为当前用户Id</p>
+<h2 id="ProductStockState"><a href="#ProductStockState" class="headerlink" title="ProductStockState"></a><strong>ProductStockState</strong></h2><p>在项目 <em>ProductManagement.Domain.Shared</em> 中创建Products文件夹，在文件夹中创建ProductStockState枚举类。</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ProductManagement.Products</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">enum</span> ProductStockState : <span class="built_in">byte</span></span><br><span class="line">    &#123;</span><br><span class="line">        PreOrder,</span><br><span class="line">        InStock,</span><br><span class="line">        NotAvailable,</span><br><span class="line">        Stopped</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>在项目ProductManagement.Domain.Shared定义该枚举是为了在DTO中或UI中重用。</p>
+<h2 id="Product"><a href="#Product" class="headerlink" title="Product"></a>Product</h2><p>在项目 <em>ProductManagement.Domain</em> 中创建 Products文件夹，在文件夹中创建Product类</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ProductManagement.Products</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Product</span> : <span class="title">FullAuditedAggregateRoot</span>&lt;<span class="title">Guid</span>&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> Category Category &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> Guid CategoryId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">float</span> Price &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">bool</span> IsFreeCargo &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> DateTime ReleaseDate &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> ProductStockState StockState &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这次我们继承了<em><strong>FullAuditedAggregateRoot</strong></em>类，该类新增了IsDeleted，DeletionTime，DeleterId属性，同时该类继承了ISoftDelete接口，实现了软删除。</p>
+<p>现在项目结构看起来是这个样子</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230427174808836.png"
+                      alt="image-20230427174808836"
+                ></p>
+<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a><strong>Constants</strong></h2><p>我们需要为实体属性定义一个常量，用它来验证输入项。</p>
+<p>在项目 <em>ProductManagement.Domain.Shared</em> 中创建文件夹Categories，在文件夹中新建 CategoryConsts 类</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ProductManagement.Categories</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">CategoryConsts</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">int</span> MaxNameLength = <span class="number">128</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>在Products文件夹中创建 ProductConsts 类</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ProductManagement.Products</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">ProductConsts</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">const</span> <span class="built_in">int</span> MaxNameLength = <span class="number">128</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><em>MaxNameLength</em> 用来验证Name的长度最长为128个字符</p>
+<h1 id="EF-Core-数据库映射"><a href="#EF-Core-数据库映射" class="headerlink" title="EF Core 数据库映射"></a>EF Core 数据库映射</h1><h2 id="在-DbContext-中添加实体"><a href="#在-DbContext-中添加实体" class="headerlink" title="在 DbContext 中添加实体"></a>在 <strong>DbContext</strong> 中添加实体</h2><p>在项目 <em>ProductManagement.EntityFrameworkCore</em> 中找到类 <em>ProductManagementDbContext</em>  </p>
+<p>新增两个DbSet集合</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> DbSet&lt;Product&gt; Products &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"><span class="keyword">public</span> DbSet&lt;Category&gt; Categories &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br></pre></td></tr></table></figure></div>
+<p>EF Core支持两种数据验证方式</p>
+<ul>
+<li><p><strong>Data Annotations</strong>     为属性添加Attributes特性，如 [Required]、[StringLength],</p>
+</li>
+<li><p><strong>Fluent API</strong>                   链式代码实现数据验证约束</p>
+</li>
+</ul>
+<p>Fluent API 功能更完善，本文中我们将采用Fluent API</p>
+<h2 id="实体映射表"><a href="#实体映射表" class="headerlink" title="实体映射表"></a>实体映射表</h2><p>在类 ProductManagementDbContext中，重写方法 OnModelCreating， 添加以下代码</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">builder.Entity&lt;Category&gt;(b =&gt;</span><br><span class="line">	&#123;</span><br><span class="line">		b.ToTable(<span class="string">&quot;Categories&quot;</span>);</span><br><span class="line">		b.Property(x =&gt; x.Name)</span><br><span class="line">		 .HasMaxLength(CategoryConsts.MaxNameLength)</span><br><span class="line">		 .IsRequired();</span><br><span class="line">		b.HasIndex(x =&gt; x.Name);</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	builder.Entity&lt;Product&gt;(b =&gt;</span><br><span class="line">	&#123;</span><br><span class="line">		b.ToTable(<span class="string">&quot;Products&quot;</span>);</span><br><span class="line">		b.Property(x =&gt; x.Name)</span><br><span class="line">		 .HasMaxLength(ProductConsts.MaxNameLength)</span><br><span class="line">		 .IsRequired();</span><br><span class="line">		b.HasOne(x =&gt; x.Category)</span><br><span class="line">		 .WithMany()</span><br><span class="line">		 .HasForeignKey(x =&gt; x.CategoryId)</span><br><span class="line">		 .OnDelete(DeleteBehavior.Restrict)</span><br><span class="line">		 .IsRequired();</span><br><span class="line">		b.HasIndex(x =&gt; x.Name).IsUnique();</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p>实体 Category 映射表 Categories, Name为必填项，长度限制128，是索引字段</p>
+<p>实体 Product   映射表 Products,    Name为必填项，长度限制128，是索引字段，和表Categories是一对多的关系，外键为 CategoryId</p>
+<h2 id="Add-Migration"><a href="#Add-Migration" class="headerlink" title="Add-Migration"></a><strong>Add-Migration</strong></h2><p>实体及映射创建完毕后，我们使用命令对实体进行迁移</p>
+<p>Visual Studio 中选择 工具 -&gt; Nuget包管理器 -&gt; 程序包管理器控制台</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230427181903635.png"
+                      alt="image-20230427181903635"
+                ></p>
+<p>输入命令</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Add-Migration <span class="string">&quot;Added_Categories_And_Products&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>或者使用 dotnet ef命令</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet ef migrations add &quot;Added_Categories_And_Products&quot;</span><br></pre></td></tr></table></figure></div>
+
+<p>一个新的迁移被添加到项目 <em>ProductManagement.EntityFrameworkCore</em> 中</p>
+<h2 id="种子数据"><a href="#种子数据" class="headerlink" title="种子数据"></a>种子数据</h2><p>在项目 <em>ProductManagement.Domain</em> 中，Data文件夹下新建类 ProductManagementDataSeedContributor</p>
+<p>该类继承了接口 <em><strong>IDataSeedContributor</strong></em>，ABP将会自动发现并调用 <strong>SeedAsync</strong> 方法</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ProductManagement.Data</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ProductManagementDataSeedContributor</span> : <span class="title">IDataSeedContributor</span>, <span class="title">ITransientDependency</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> IRepository&lt;Category, Guid&gt; _categoryRepository;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> IRepository&lt;Product, Guid&gt; _productRepository;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ProductManagementDataSeedContributor</span>(<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="function">            IRepository&lt;Category, Guid&gt; categoryRepository,</span></span></span><br><span class="line"><span class="params"><span class="function">            IRepository&lt;Product, Guid&gt; productRepository</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            _categoryRepository = categoryRepository;</span><br><span class="line">            _productRepository = productRepository;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">SeedAsync</span>(<span class="params">DataSeedContext context</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">await</span> _categoryRepository.CountAsync() &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> monitors = <span class="keyword">new</span> Category &#123; Name = <span class="string">&quot;Monitors&quot;</span> &#125;;</span><br><span class="line">            <span class="keyword">var</span> printers = <span class="keyword">new</span> Category &#123; Name = <span class="string">&quot;Printers&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">await</span> _categoryRepository</span><br><span class="line">                .InsertManyAsync(<span class="keyword">new</span>[] &#123; monitors, printers &#125;);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> monitor1 = <span class="keyword">new</span> Product</span><br><span class="line">            &#123;</span><br><span class="line">                Category = monitors,</span><br><span class="line">                Name = <span class="string">&quot;XP VH240a 23.8-Inch Full HD 1080p IPS LED Monitor&quot;</span>,</span><br><span class="line">                Price = <span class="number">163</span>,</span><br><span class="line">                ReleaseDate = <span class="keyword">new</span> DateTime(<span class="number">2019</span>, <span class="number">05</span>, <span class="number">24</span>),</span><br><span class="line">                StockState = ProductStockState.InStock</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> monitor2 = <span class="keyword">new</span> Product</span><br><span class="line">            &#123;</span><br><span class="line">                Category = monitors,</span><br><span class="line">                Name = <span class="string">&quot;Clips 328E1CA 32-Inch Curved Monitor, 4K UHD&quot;</span>,</span><br><span class="line">                Price = <span class="number">349</span>,</span><br><span class="line">                IsFreeCargo = <span class="literal">true</span>,</span><br><span class="line">                ReleaseDate = <span class="keyword">new</span> DateTime(<span class="number">2022</span>, <span class="number">02</span>, <span class="number">01</span>),</span><br><span class="line">                StockState = ProductStockState.PreOrder</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> printer1 = <span class="keyword">new</span> Product</span><br><span class="line">            &#123;</span><br><span class="line">                Category = monitors,</span><br><span class="line">                Name = <span class="string">&quot;Acme Monochrome Laser Printer, Compact All-In One&quot;</span>,</span><br><span class="line">                Price = <span class="number">199</span>,</span><br><span class="line">                ReleaseDate = <span class="keyword">new</span> DateTime(<span class="number">2020</span>, <span class="number">11</span>, <span class="number">16</span>),</span><br><span class="line">                StockState = ProductStockState.NotAvailable</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">await</span> _productRepository</span><br><span class="line">                .InsertManyAsync(<span class="keyword">new</span>[] &#123; monitor1, monitor2, printer1 &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="迁移数据库"><a href="#迁移数据库" class="headerlink" title="迁移数据库"></a>迁移数据库</h2><p>右键运行项目  ProductManagement.DbMigrator，构建及初始化数据库。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230427183037475.png"
+                      alt="image-20230427183037475"
+                ></p>
+<h1 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h1><h2 id="定义DTO对象"><a href="#定义DTO对象" class="headerlink" title="定义DTO对象"></a>定义DTO对象</h2><p>DTO对象被用来在应用层和数据层之间进行传输。在UI层我们避免直接使用实体对象。</p>
+<p>在项目<em>ProductManagement.Application.Contracts</em> 中创建 Products文件夹，并创建类 ProductDTO</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ProductManagement.Products</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ProductDto</span> : <span class="title">AuditedEntityDto</span>&lt;<span class="title">Guid</span>&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> Guid CategoryId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> CategoryName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">float</span> Price &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">bool</span> IsFreeCargo &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> DateTime ReleaseDate &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> ProductStockState StockState &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>ProductDTO继承自 <em><strong>AuditedEntityDto<Guid></strong></em>, 该类定义了 Id, CreationTime, CreatorId, LastModificationTime和 LastModifierId 属性</p>
+<h2 id="IProductAppService"><a href="#IProductAppService" class="headerlink" title="IProductAppService"></a><strong>IProductAppService</strong></h2><p>在项目<em>ProductManagement.Application.Contracts</em> 的Products文件夹中创建接口  IProductAppService</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ProductManagement.Products</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IProductAppService</span> : <span class="title">IApplicationService</span></span><br><span class="line">    &#123;</span><br><span class="line">        Task&lt;PagedResultDto&lt;ProductDto&gt;&gt; GetListAsync(PagedAndSortedResultRequestDto input);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>在该类中，你可以看到一些预定义的类型</p>
+<ul>
+<li><p>IProductAppService继承了接口 IApplicationService，这样 ABP 就可以识别到这个 Application Services.</p>
+</li>
+<li><p>GetListAsync 方法入参为 PagedAndSortedResultRequestDto 对象，该对象包含了 MaxResultCount, SkipCount和 Sorting属性.</p>
+</li>
+<li><p>GetListAsync 方法返回了 PagedResultDto<ProductDto>泛型对象,  该对象包含了 TotalCount 和 ProductDto 集合.</p>
+</li>
+</ul>
+<h2 id="ProductAppService"><a href="#ProductAppService" class="headerlink" title="ProductAppService"></a><strong>ProductAppService</strong></h2><p>在项目 <em>ProductManagement.Application</em> 中创建文件夹 Products，然后创建 ProductAppService 类，并实现 IProductAppService接口</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ProductManagement.Products</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ProductAppService</span> : <span class="title">ProductManagementAppService</span>, <span class="title">IProductAppService</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> IRepository&lt;Product, Guid&gt; _productRepository;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ProductAppService</span>(<span class="params">IRepository&lt;Product, Guid&gt; productRepository</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            _productRepository = productRepository;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">async</span> Task&lt;PagedResultDto&lt;ProductDto&gt;&gt; GetListAsync(PagedAndSortedResultRequestDto input)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> queryable = <span class="keyword">await</span> _productRepository.WithDetailsAsync(x =&gt; x.Category);</span><br><span class="line"></span><br><span class="line">            queryable = queryable.Skip(input.SkipCount)</span><br><span class="line">                .Take(input.MaxResultCount)</span><br><span class="line">                .OrderBy(input.Sorting ?? <span class="keyword">nameof</span>(Product.Name));</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> products = <span class="keyword">await</span> AsyncExecuter.ToListAsync(queryable);</span><br><span class="line">            <span class="keyword">var</span> count = <span class="keyword">await</span> _productRepository.GetCountAsync();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> PagedResultDto&lt;ProductDto&gt;(</span><br><span class="line">                count,</span><br><span class="line">                ObjectMapper.Map&lt;List&lt;Product&gt;, List&lt;ProductDto&gt;&gt;(products)</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>ProductAppService 继承了类 <em><strong>ProductManagementAppService</strong></em> ，该类由模板自动生成。</p>
+<p>ProductAppService 注入了接口 <em><strong>IRepository&lt;Product, Guid&gt;</strong></em>   , 该接口为 默认仓库</p>
+<p> _productRepository.WithDetailsAsync  返回了 IQueryable<Product> ，并包含了 Categories </p>
+<p><em><strong>AsyncExecuter.ToListAsync</strong></em> 方法被用来异步执行 IQueryable对象，它可以脱离 EF包的依赖。</p>
+<p><em><strong>ObjectMapper.Map</strong></em> 映射 Entity和DTO</p>
+<h2 id="对象映射"><a href="#对象映射" class="headerlink" title="对象映射"></a>对象映射</h2><p><em><strong>ObjectMapper</strong></em> 使用 <strong>AutoMapper</strong> 库实现了类型转换</p>
+<p>在项目 <em>ProductManagement.Application</em> 中打开类 <em><strong>ProductManagementApplicationAutoMapperProfile</strong></em> ，添加Prodct于ProductDTO映射</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ProductManagementApplicationAutoMapperProfile</span> : <span class="title">Profile</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProductManagementApplicationAutoMapperProfile</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        CreateMap&lt;Product, ProductDto&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>一个比较有趣的特性就是 <strong>Flattening</strong>（铺平），它可以将Category中的Name属性字段映射到 ProductDTO中的CategoryName属性</p>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>在项目 <em>ProductManagement.Application.Tests</em>  中添加类 ProductAppService_Tests </p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ProductManagement.Products</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ProductAppService_Tests</span> : <span class="title">ProductManagementApplicationTestBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> IProductAppService _productAppService;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ProductAppService_Tests</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            _productAppService = GetRequiredService&lt;IProductAppService&gt;();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">Fact</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">Should_Get_Product_List</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//Act</span></span><br><span class="line">            <span class="keyword">var</span> output = <span class="keyword">await</span> _productAppService.GetListAsync(<span class="keyword">new</span> PagedAndSortedResultRequestDto());</span><br><span class="line"></span><br><span class="line">            <span class="comment">//Assert</span></span><br><span class="line">            output.TotalCount.ShouldBe(<span class="number">3</span>);</span><br><span class="line">            output.Items.ShouldContain(x =&gt; x.Name.Contains(<span class="string">&quot;Acme Monochrome Laser Printer&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>该类继承了 <em><strong>ProductManagementApplicationTestBase</strong></em> 类，它继承了ABP框架中的一些基础设施，让我们测试更容易</p>
+<p>我们在构造函数中使用 GetRequiredService方法来解析依赖。</p>
+<p>运行该方法，测试通过。</p>
+<p><strong>注意：这里的数据库是用的  SQLite in-memory 来模拟的数据库，并不是你刚刚用的LocalDB。</strong> </p>
+<p>如果在修改为LocalDB，在测试项目 ProductManagement.EntityFrameworkCore.Tests 中找到 <em><strong>ProductManagementEntityFrameworkCoreTestModule</strong></em>类，</p>
+<p>并修改方法 ConfigureInMemorySqlite方法为如下代码</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">services.Configure&lt;AbpDbContextOptions&gt;(options =&gt;</span><br><span class="line">&#123;</span><br><span class="line">	options.Configure(context =&gt;</span><br><span class="line">	&#123;</span><br><span class="line">		context.DbContextOptions.UseSqlServer(<span class="string">&quot;Server=(LocalDb)\\MSSQLLocalDB;Database=ProductManagement;Trusted_Connection=True;TrustServerCertificate=True&quot;</span>);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230427190427214.png"
+                      alt="image-20230427190427214"
+                ></p>
+<h2 id="Swagger-UI"><a href="#Swagger-UI" class="headerlink" title="Swagger UI"></a>Swagger UI</h2><p>ABP框架自动继承了 Swagger。运行项目  <em>ProductManagement.Web</em>，url拼接 &#x2F;swagger</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230427191534342.png"
+                      alt="image-20230427191534342"
+                ></p>
+<h1 id="增删改"><a href="#增删改" class="headerlink" title="增删改"></a>增删改</h1><p><strong>IProductAppService 接口新增方法</strong></p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Task <span class="title">CreateAsync</span>(<span class="params">CreateUpdateProductDto input</span>)</span>;</span><br><span class="line"><span class="function">Task <span class="title">UpdateAsync</span>(<span class="params">Guid id, CreateUpdateProductDto input</span>)</span>;</span><br><span class="line"><span class="function">Task <span class="title">DeleteAsync</span>(<span class="params">Guid id</span>)</span>;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>新增DTO</strong></p>
+<p>新增 CreateUpdateProductDto</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ProductManagement.Products</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CreateUpdateProductDto</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> Guid CategoryId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        [<span class="meta">Required</span>]</span><br><span class="line">        [<span class="meta">StringLength(ProductConsts.MaxNameLength)</span>]</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">float</span> Price &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">bool</span> IsFreeCargo &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> DateTime ReleaseDate &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> ProductStockState StockState &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>新增 CategoryLookupDto</strong></p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ProductManagement.Categories</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CategoryLookupDto</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> Guid Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>ProductAppService 实现接口</strong></p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">CreateAsync</span>(<span class="params">CreateUpdateProductDto input</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">await</span> _productRepository.InsertAsync(</span><br><span class="line">		ObjectMapper.Map&lt;CreateUpdateProductDto, Product&gt;(input)</span><br><span class="line">	);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">UpdateAsync</span>(<span class="params">Guid id, CreateUpdateProductDto input</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">var</span> product = <span class="keyword">await</span> _productRepository.GetAsync(id);</span><br><span class="line">	ObjectMapper.Map(input, product);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">DeleteAsync</span>(<span class="params">Guid id</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">await</span> _productRepository.DeleteAsync(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>创建映射</strong></p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CreateMap&lt;CreateUpdateProductDto, Product&gt;();</span><br><span class="line">CreateMap&lt;Category, CategoryLookupDto&gt;();</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>添加Add测试代码</strong></p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Fact</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">AddProduct</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">var</span> output = <span class="keyword">await</span> _productAppService.GetListAsync(<span class="keyword">new</span> PagedAndSortedResultRequestDto());</span><br><span class="line">	output.TotalCount.ShouldBe(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">await</span> _productAppService.CreateAsync(<span class="keyword">new</span> CreateUpdateProductDto()</span><br><span class="line">	&#123;</span><br><span class="line">		CategoryId = output.Items[<span class="number">0</span>].CategoryId,</span><br><span class="line">		IsFreeCargo = <span class="literal">true</span>,</span><br><span class="line">		Name = <span class="string">&quot;TestTestTest&quot;</span>,</span><br><span class="line">		Price = <span class="number">1000</span>,</span><br><span class="line">		ReleaseDate = DateTime.Now,</span><br><span class="line">		StockState = ProductStockState.InStock</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	output = <span class="keyword">await</span> _productAppService.GetListAsync(<span class="keyword">new</span> PagedAndSortedResultRequestDto());</span><br><span class="line"></span><br><span class="line">	<span class="comment">//Assert</span></span><br><span class="line">	output.TotalCount.ShouldBe(<span class="number">4</span>);</span><br><span class="line">	output.Items.ShouldContain(x =&gt; x.Name.Contains(<span class="string">&quot;TestTestTest&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>测试运行发现数量已从3个变成4个</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230427193758614.png"
+                      alt="image-20230427193758614"
+                ></p>
+<p><strong>添加Delete测试代码</strong></p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Fact</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">DeleteProduct</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">var</span> output = <span class="keyword">await</span> _productAppService.GetListAsync(<span class="keyword">new</span> PagedAndSortedResultRequestDto());</span><br><span class="line">	<span class="keyword">var</span> entity = output.Items[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">await</span> _productAppService.DeleteAsync(entity.Id);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> product = <span class="keyword">await</span> _productAppService.GetAsync(entity.Id);</span><br><span class="line">	</span><br><span class="line">	product.ShouldBeNull();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>查看数据库，发现数据记录中，字段 <strong>IsDeleted</strong> 被标记被True，表示该条数据已被软删除</p>
+<p><strong>添加Update测试代码</strong></p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Fact</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">UpdateProduct</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">var</span> id = Guid.Parse(<span class="string">&quot;61d0a30a-4351-001a-8700-3a0ad799e721&quot;</span>);</span><br><span class="line">	<span class="keyword">var</span> entity = <span class="keyword">await</span> _productAppService.GetAsync(id);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">await</span> _productAppService.UpdateAsync(id, <span class="keyword">new</span> CreateUpdateProductDto()</span><br><span class="line">	&#123;</span><br><span class="line">		CategoryId = entity.CategoryId,</span><br><span class="line">		IsFreeCargo = entity.IsFreeCargo,</span><br><span class="line">		Price = entity.Price,</span><br><span class="line">		ReleaseDate = DateTime.Now,</span><br><span class="line">		StockState = entity.StockState,</span><br><span class="line">		Name = <span class="string">&quot;测试一下&quot;</span></span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> product = <span class="keyword">await</span> _productAppService.GetAsync(id);</span><br><span class="line">	product.Name.ShouldBe(<span class="string">&quot;测试一下&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>运行测试通过，打开数据库发现名称也已经发生了变化。</p>
+<p>至此，一个简单的增删改查就做完了，是不是很简单 * ^____^ *。</p>
+<p><strong>文中案例来自 <a class="link"   target="_blank" rel="noopener" href="https://abp.io/books/mastering-abp-framework" >《Mastering ABP Framework》 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></strong></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：【ABP学习】02 使用ABP进行CRUD操作</li>
+        <li>Post author：TomLiu</li>
+        <li>Create time：2023-04-27 09:02:28</li>
+        <li>
+            Post link：https://tomsweet.github.io/2023/04/27/2023-04-27-【ABP学习】-02-使用APB进行CRUD操作/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/aspnetcore/">#aspnetcore</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/abp/">#abp</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/03/29/2023-03-29-%E3%80%90ABP%E5%AD%A6%E4%B9%A0%E3%80%91-01-%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AAABP%E9%A1%B9%E7%9B%AE/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">【ABP学习】01 初始化一个ABP项目</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;Comments
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-pjax
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script data-pjax>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: 'c32452ebdda9a2fcd6a1',
+                    clientSecret: '92e94dc8020341b1b71a4d164066180d2aa65dd8',
+                    repo: 'https://github.com/liugt34/liugt34.github.io',
+                    owner: 'liugt34',
+                    admin: ['liugt34'],
+                    id: __gitalk__pathname,
+                    language: 'en'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">【ABP学习】02 使用ABP进行CRUD操作</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E9%A2%86%E5%9F%9F%E5%AF%B9%E8%B1%A1"><span class="nav-text">定义领域对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Category"><span class="nav-text">Category</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ProductStockState"><span class="nav-text">ProductStockState</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Product"><span class="nav-text">Product</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constants"><span class="nav-text">Constants</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EF-Core-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%A0%E5%B0%84"><span class="nav-text">EF Core 数据库映射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-DbContext-%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%AE%9E%E4%BD%93"><span class="nav-text">在 DbContext 中添加实体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E6%98%A0%E5%B0%84%E8%A1%A8"><span class="nav-text">实体映射表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-Migration"><span class="nav-text">Add-Migration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%8D%E5%AD%90%E6%95%B0%E6%8D%AE"><span class="nav-text">种子数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">迁移数据库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="nav-text">查询数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89DTO%E5%AF%B9%E8%B1%A1"><span class="nav-text">定义DTO对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IProductAppService"><span class="nav-text">IProductAppService</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ProductAppService"><span class="nav-text">ProductAppService</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%98%A0%E5%B0%84"><span class="nav-text">对象映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="nav-text">单元测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swagger-UI"><span class="nav-text">Swagger UI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9"><span class="nav-text">增删改</span></a></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-regular fa-computer-classic"></i>&nbsp;&nbsp;<a href="/">TomLiu</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        VISITOR COUNT&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        TOTAL PAGE VIEWS&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a></span>
+                <br> 
+            <span class="theme-version-container">THEME&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.1.3</a>
+        </div>
+        
+        
+        
+            <div id="start_time_div" style="display:none">
+                2022/8/17 11:45:14
+            </div>
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="unfolded-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="fa-regular fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="folded-tools-list">
+        <li class="right-bottom-tools tool-toggle-show flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/menu-shrink.js"></script>
+
+<script src="/js/tools/go-top-bottom.js"></script>
+
+<script src="/js/tools/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/tools/code-block.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/layouts/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
+    
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
