@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="TomLiu">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/2023/05/03/2023-05-22-generic-strongly-typed-id-converter/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="使用泛型转换强类型Id">
+    <meta property="og:description" content="Hexo Theme Redefine">
+    <meta property="og:url" content="http://example.com2023/05/03/2023-05-22-Generic-Strongly-Typed-Id-Converter/">
+    <meta property="og:image" content="/images/redefine-logo.svg">
+    <meta property="og:site_name" content="葛覃谷">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="使用泛型转换强类型Id">
+    <meta name="twitter:description" content="Hexo Theme Redefine">
+    <meta name="twitter:image" content="/images/redefine-logo.svg">
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            使用泛型转换强类型Id -
+        
+        葛覃谷
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/assets/fonts.css">
+
+    
+    
+    
+    
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#ffffff","avatar":"/images/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"葛之覃兮，施于中谷。<br/>维叶萋萋，黄鸟于飞。<br/>集于灌木，其鸣喈喈。","custom_font":{"enable":false,"font_family":null,"font_url":null}},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":true},"code_block":{"copy":true,"style":"mac","custom_font":{"enable":false,"font_family":null,"font_url":null}},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"1.1.3","friend_links":{"columns":2},"home_article":{"date_format":"auto","category":{"enable":true,"limit":3},"tag":{"enable":true,"limit":3}}};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="menu-wrapper">
+    
+    <div class="menu-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                葛覃谷
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        HOME
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        ARCHIVES
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="menu-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                HOME
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                ARCHIVES
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">使用泛型转换强类型Id</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">TomLiu</span>
+                            
+                                <span class="author-label">lol</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-05-03 06:22:38</span>
+        <span class="mobile">2023-05-03 06:22</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="pc">2024-01-12 09:06:40</span>
+            <span class="mobile">2024-01-12 09:06</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/ASP-NET-Core/">ASP.NET Core</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/aspnetcore/">aspnetcore</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/beautiful-park-1.jpg"
+                      alt="banner"
+                ></p>
+<p>在上一章中，我们介绍了如何使用强类型Id。在使用的过程中也发现了一些问题，比如在类型转换时需要对每个强类型都需要进行转换。今天我们来学习一下如何使用泛型，将类型转换做成一个通用类。</p>
+<h1 id="类型通用转换"><a href="#类型通用转换" class="headerlink" title="类型通用转换"></a>类型通用转换</h1><p>使用 <strong>record</strong> 创建一个泛型类型, 然后使 <em><strong>StudentId, ClassRoomId, TeacherId</strong></em> 继承该类</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">record</span> <span class="title">StronglyTypedId</span>&lt;<span class="title">TValue</span>&gt;(<span class="params">TValue Value</span>) <span class="keyword">where</span> TValue : <span class="keyword">notnull</span></span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">string</span> <span class="title">ToString</span>()</span> =&gt; Value.ToString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">record</span> <span class="title">StudentId</span>(<span class="params"><span class="built_in">int</span> Value</span>) : <span class="title">StronglyTypedId</span>&lt;<span class="title">int</span>&gt;(<span class="params">Value</span>)</span>;</span><br></pre></td></tr></table></figure></div>
+
+<p>现在我们有了一个通用的基类，这样我们就可以编写一个通用转换器了。它将比仅针对StudentIdConvert的内容更复杂，但我们只需要写一次。</p>
+<p>首先我们需要创建一个助手类，主要用途如下：</p>
+<ul>
+<li><p>检查类型是否为强类型id，并获取值的类型</p>
+</li>
+<li><p>创建并缓存委托，以根据值创建强类型id的实例</p>
+</li>
+</ul>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">StronglyTypedIdHelper</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//缓存委托</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> ConcurrentDictionary&lt;Type, Delegate&gt; StronglyTypedIdFactories = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="title">Func</span>&lt;<span class="title">TValue</span>, <span class="title">object</span>&gt; <span class="title">GetFactory</span>&lt;<span class="title">TValue</span>&gt;(<span class="params">Type stronglyTypedIdType</span>) <span class="keyword">where</span> TValue : <span class="keyword">notnull</span></span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> (Func&lt;TValue, <span class="built_in">object</span>&gt;)StronglyTypedIdFactories.GetOrAdd(stronglyTypedIdType, CreateFactory&lt;TValue&gt;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据强类型Type返回相应的实例</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="title">Func</span>&lt;<span class="title">TValue</span>, <span class="title">object</span>&gt; <span class="title">CreateFactory</span>&lt;<span class="title">TValue</span>&gt;(<span class="params">Type stronglyTypedIdType</span>) <span class="keyword">where</span> TValue : <span class="keyword">notnull</span></span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!IsStronglyTypedId(stronglyTypedIdType))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">$&quot;Type &#x27;<span class="subst">&#123;stronglyTypedIdType&#125;</span>&#x27; is not a strongly-typed id type&quot;</span>, <span class="keyword">nameof</span>(stronglyTypedIdType));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> ctor = stronglyTypedIdType.GetConstructor(<span class="keyword">new</span>[] &#123; <span class="keyword">typeof</span>(TValue) &#125;);</span><br><span class="line">        <span class="keyword">if</span> (ctor <span class="keyword">is</span> <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentException(<span class="string">$&quot;Type &#x27;<span class="subst">&#123;stronglyTypedIdType&#125;</span>&#x27; doesn&#x27;t have a constructor with one parameter of type &#x27;<span class="subst">&#123;<span class="keyword">typeof</span>(TValue)&#125;</span>&#x27;&quot;</span>, <span class="keyword">nameof</span>(stronglyTypedIdType));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> param = Expression.Parameter(<span class="keyword">typeof</span>(TValue), <span class="string">&quot;value&quot;</span>);</span><br><span class="line">        <span class="keyword">var</span> body = Expression.New(ctor, param);</span><br><span class="line">        <span class="keyword">var</span> lambda = Expression.Lambda&lt;Func&lt;TValue, <span class="built_in">object</span>&gt;&gt;(body, param);</span><br><span class="line">        <span class="keyword">return</span> lambda.Compile();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断是否是强类型</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">bool</span> <span class="title">IsStronglyTypedId</span>(<span class="params">Type type</span>)</span> =&gt; IsStronglyTypedId(type, <span class="keyword">out</span> _);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">bool</span> <span class="title">IsStronglyTypedId</span>(<span class="params">Type type, [NotNullWhen(<span class="literal">true</span></span>)] <span class="keyword">out</span> Type idType)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (type <span class="keyword">is</span> <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(type));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (type.BaseType <span class="keyword">is</span> Type baseType &amp;&amp; baseType.IsGenericType &amp;&amp; baseType.GetGenericTypeDefinition() == <span class="keyword">typeof</span>(StronglyTypedId&lt;&gt;))</span><br><span class="line">        &#123;</span><br><span class="line">            idType = baseType.GetGenericArguments()[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        idType = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>编写类型转换器</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StronglyTypedIdConverter</span>&lt;<span class="title">TValue</span>&gt; : <span class="title">TypeConverter</span> <span class="keyword">where</span> <span class="title">TValue</span> : <span class="title">notnull</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> TypeConverter IdValueConverter = GetIdValueConverter();</span><br><span class="line">    <span class="comment">//获取类型转换器</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> TypeConverter <span class="title">GetIdValueConverter</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> converter = TypeDescriptor.GetConverter(<span class="keyword">typeof</span>(TValue));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!converter.CanConvertFrom(<span class="keyword">typeof</span>(<span class="built_in">string</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="string">$&quot;Type &#x27;<span class="subst">&#123;<span class="keyword">typeof</span>(TValue)&#125;</span>&#x27; doesn&#x27;t have a converter that can convert from string&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> converter;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> Type _type;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StronglyTypedIdConverter</span>(<span class="params">Type type</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        _type = type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">bool</span> <span class="title">CanConvertFrom</span>(<span class="params">ITypeDescriptorContext context, Type sourceType</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> sourceType == <span class="keyword">typeof</span>(<span class="built_in">string</span>) || sourceType == <span class="keyword">typeof</span>(TValue) || <span class="keyword">base</span>.CanConvertFrom(context, sourceType);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">bool</span> <span class="title">CanConvertTo</span>(<span class="params">ITypeDescriptorContext context, Type destinationType</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> destinationType == <span class="keyword">typeof</span>(<span class="built_in">string</span>) || destinationType == <span class="keyword">typeof</span>(TValue) || <span class="keyword">base</span>.CanConvertTo(context, destinationType);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">object</span> <span class="title">ConvertFrom</span>(<span class="params">ITypeDescriptorContext context, CultureInfo culture, <span class="built_in">object</span> <span class="keyword">value</span></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">value</span> <span class="keyword">is</span> <span class="built_in">string</span> s)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">value</span> = IdValueConverter.ConvertFrom(s);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">value</span> <span class="keyword">is</span> TValue idValue)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//判断是不是泛型强类型</span></span><br><span class="line">            <span class="keyword">var</span> factory = StronglyTypedIdHelper.GetFactory&lt;TValue&gt;(_type);</span><br><span class="line">            <span class="keyword">return</span> factory(idValue);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">base</span>.ConvertFrom(context, culture, <span class="keyword">value</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">object</span> <span class="title">ConvertTo</span>(<span class="params">ITypeDescriptorContext context, CultureInfo culture, <span class="built_in">object</span> <span class="keyword">value</span>, Type destinationType</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">value</span> <span class="keyword">is</span> <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(<span class="keyword">value</span>));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> stronglyTypedId = (StronglyTypedId&lt;TValue&gt;)<span class="keyword">value</span>;</span><br><span class="line">        </span><br><span class="line">        TValue idValue = stronglyTypedId.Value;</span><br><span class="line">        <span class="keyword">if</span> (destinationType == <span class="keyword">typeof</span>(<span class="built_in">string</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> idValue.ToString()!;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (destinationType == <span class="keyword">typeof</span>(TValue))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> idValue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">base</span>.ConvertTo(context, culture, <span class="keyword">value</span>, destinationType);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这个转换器可以转换为字符串和TValue，这应该满足我们的需求。此时我们将其添加到泛型强类型的特性上</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TypeConverter(typeof(StronglyTypedIdConverter))</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">record</span> <span class="title">StronglyTypedId</span>&lt;<span class="title">TValue</span>&gt;(<span class="params">TValue Value</span>) <span class="keyword">where</span> TValue : <span class="keyword">notnull</span></span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">string</span> <span class="title">ToString</span>()</span> =&gt; Value.ToString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>Oooops!!! 报错了，这是因为转换器类型不能是开放的泛型类型。因此我们需要一个非通用的中间转换器，它将创建实际的转换器并委托给它！</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StronglyTypedIdConverter</span> : <span class="title">TypeConverter</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//转换器缓存</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> ConcurrentDictionary&lt;Type, TypeConverter&gt; ActualConverters = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> TypeConverter _innerConverter;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StronglyTypedIdConverter</span>(<span class="params">Type stronglyTypedIdType</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        _innerConverter = ActualConverters.GetOrAdd(stronglyTypedIdType, CreateActualConverter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">bool</span> <span class="title">CanConvertFrom</span>(<span class="params">ITypeDescriptorContext context, Type sourceType</span>)</span> =&gt;</span><br><span class="line">        _innerConverter.CanConvertFrom(context, sourceType);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">bool</span> <span class="title">CanConvertTo</span>(<span class="params">ITypeDescriptorContext context, Type destinationType</span>)</span> =&gt;</span><br><span class="line">        _innerConverter.CanConvertTo(context, destinationType);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">object</span> <span class="title">ConvertFrom</span>(<span class="params">ITypeDescriptorContext context, CultureInfo culture, <span class="built_in">object</span> <span class="keyword">value</span></span>)</span> =&gt;</span><br><span class="line">        _innerConverter.ConvertFrom(context, culture, <span class="keyword">value</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">object</span> <span class="title">ConvertTo</span>(<span class="params">ITypeDescriptorContext context, CultureInfo culture, <span class="built_in">object</span> <span class="keyword">value</span>, Type destinationType</span>)</span> =&gt;</span><br><span class="line">        _innerConverter.ConvertTo(context, culture, <span class="keyword">value</span>, destinationType);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//创建转换器</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> TypeConverter <span class="title">CreateActualConverter</span>(<span class="params">Type stronglyTypedIdType</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!StronglyTypedIdHelper.IsStronglyTypedId(stronglyTypedIdType, <span class="keyword">out</span> <span class="keyword">var</span> idType))</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="string">$&quot;The type &#x27;<span class="subst">&#123;stronglyTypedIdType&#125;</span>&#x27; is not a strongly typed id&quot;</span>);</span><br><span class="line">		<span class="comment">//使用反射创建转换器实例</span></span><br><span class="line">        <span class="keyword">var</span> actualConverterType = <span class="keyword">typeof</span>(StronglyTypedIdConverter&lt;&gt;).MakeGenericType(idType);</span><br><span class="line">        <span class="keyword">return</span> (TypeConverter)Activator.CreateInstance(actualConverterType, stronglyTypedIdType)!;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>OK，现在我们把之前的转换器都删除，重新 F5运行测试成功。</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;张三&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h1 id="JSON通用转换"><a href="#JSON通用转换" class="headerlink" title="JSON通用转换"></a>JSON通用转换</h1><p>解决了类型转换问题，下一步就是JSON的通用转换了，当前我们还是每一个类型都专门写了JSON转换器来进行处理。</p>
+<p>现在我们移除<strong>StudentIdJsonConverter</strong>类，新建<strong>StronglyTypedIdJsonConverter</strong> 泛型转换类</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StronglyTypedIdJsonConverter</span>&lt;<span class="title">TStronglyTypedId</span>, <span class="title">TValue</span>&gt; : <span class="title">JsonConverter</span>&lt;<span class="title">TStronglyTypedId</span>&gt;</span><br><span class="line">    <span class="keyword">where</span> <span class="title">TStronglyTypedId</span> : <span class="title">StronglyTypedId</span>&lt;<span class="title">TValue</span>&gt;</span><br><span class="line">    <span class="keyword">where</span> <span class="title">TValue</span> : <span class="title">notnull</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> TStronglyTypedId <span class="title">Read</span>(<span class="params"><span class="keyword">ref</span> Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (reader.TokenType <span class="keyword">is</span> JsonTokenType.Null)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> <span class="keyword">value</span> = JsonSerializer.Deserialize&lt;TValue&gt;(<span class="keyword">ref</span> reader, options);</span><br><span class="line">        <span class="comment">//利用上一个步骤中的强类型帮助类动态创建类型</span></span><br><span class="line">        <span class="keyword">var</span> factory = StronglyTypedIdHelper.GetFactory&lt;TValue&gt;(typeToConvert);</span><br><span class="line">        <span class="keyword">return</span> (TStronglyTypedId)factory(<span class="keyword">value</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Write</span>(<span class="params">Utf8JsonWriter writer, TStronglyTypedId <span class="keyword">value</span>, JsonSerializerOptions options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">value</span> <span class="keyword">is</span> <span class="literal">null</span>)</span><br><span class="line">            writer.WriteNullValue();</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            JsonSerializer.Serialize(writer, <span class="keyword">value</span>.Value, options);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>然后在services中将注入类修改为如下</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">services.AddControllers()</span><br><span class="line">    .AddJsonOptions(options =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        options.JsonSerializerOptions.Converters.Add(<span class="keyword">new</span> StronglyTypedIdJsonConverter&lt;ProductId, <span class="built_in">int</span>&gt;());</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p>但是我们发现这里还是要为每一个类型都添加一个泛型的转换器，这不是我们想要的结果。我们需要构建一个工厂类继承<strong>JsonConverterFactory</strong> ， 重写转换器创建方法，根据转换器类型自动创建JSON转换器。</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StronglyTypedIdJsonConverterFactory</span> : <span class="title">JsonConverterFactory</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> ConcurrentDictionary&lt;Type, JsonConverter&gt; Cache = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">bool</span> <span class="title">CanConvert</span>(<span class="params">Type typeToConvert</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> StronglyTypedIdHelper.IsStronglyTypedId(typeToConvert);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> JsonConverter <span class="title">CreateConverter</span>(<span class="params">Type typeToConvert, JsonSerializerOptions options</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Cache.GetOrAdd(typeToConvert, CreateConverter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> JsonConverter <span class="title">CreateConverter</span>(<span class="params">Type typeToConvert</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!StronglyTypedIdHelper.IsStronglyTypedId(typeToConvert, <span class="keyword">out</span> <span class="keyword">var</span> valueType))</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="string">$&quot;Cannot create converter for &#x27;<span class="subst">&#123;typeToConvert&#125;</span>&#x27;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> type = <span class="keyword">typeof</span>(StronglyTypedIdJsonConverter&lt;,&gt;).MakeGenericType(typeToConvert, valueType);</span><br><span class="line">        <span class="keyword">return</span> (JsonConverter)Activator.CreateInstance(type);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>修改一下注入内容</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">services.AddControllers()</span><br><span class="line">        .AddJsonOptions(options =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            options.JsonSerializerOptions.Converters.Add(new StronglyTypedIdJsonConverterFactory());</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p>重写运行，成功返回我们想要的结果。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;: 1,</span><br><span class="line">    &quot;name&quot;: &quot;张三&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="使用Newtonsoft"><a href="#使用Newtonsoft" class="headerlink" title="使用Newtonsoft"></a>使用Newtonsoft</h1><p>深吐一口气，好复杂！ 那有没有简单的的方法呢，那必须有。如果你的项目中使用了<strong>Newtonsoft.Json</strong> 那么恭喜你，序列化这些你完全不需要去管他，<strong>Newtonsoft</strong> 会自动为你寻找相对于的TypeConvert。你只需将AddJsonOptions修改为AddNewtonsoftJson即可。😊</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：使用泛型转换强类型Id</li>
+        <li>Post author：TomLiu</li>
+        <li>Create time：2023-05-03 06:22:38</li>
+        <li>
+            Post link：https://tomsweet.github.io/2023/05/03/2023-05-22-Generic-Strongly-Typed-Id-Converter/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/aspnetcore/">#aspnetcore</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/05/03/2023-05-03-Using-Record-Keyword-As-Strong-Id%20Types/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">在C# 9中使用record关键字声明强类型Id</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/04/27/2023-04-27-%E3%80%90ABP%E5%AD%A6%E4%B9%A0%E3%80%91-02-%E4%BD%BF%E7%94%A8APB%E8%BF%9B%E8%A1%8CCRUD%E6%93%8D%E4%BD%9C/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">【ABP学习】02 使用ABP进行CRUD操作</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;Comments
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-pjax
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script data-pjax>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: 'c32452ebdda9a2fcd6a1',
+                    clientSecret: '92e94dc8020341b1b71a4d164066180d2aa65dd8',
+                    repo: 'liugt34.github.io',
+                    owner: 'liugt34',
+                    admin: ['liugt34'],
+                    id: __gitalk__pathname,
+                    language: 'en'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">使用泛型转换强类型Id</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E9%80%9A%E7%94%A8%E8%BD%AC%E6%8D%A2"><span class="nav-text">类型通用转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON%E9%80%9A%E7%94%A8%E8%BD%AC%E6%8D%A2"><span class="nav-text">JSON通用转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Newtonsoft"><span class="nav-text">使用Newtonsoft</span></a></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-regular fa-computer-classic"></i>&nbsp;&nbsp;<a href="/">TomLiu</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        VISITOR COUNT&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        TOTAL PAGE VIEWS&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a></span>
+                <br> 
+            <span class="theme-version-container">THEME&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.1.3</a>
+        </div>
+        
+        
+        
+            <div id="start_time_div" style="display:none">
+                2022/8/17 11:45:14
+            </div>
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="unfolded-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="fa-regular fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="folded-tools-list">
+        <li class="right-bottom-tools tool-toggle-show flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/menu-shrink.js"></script>
+
+<script src="/js/tools/go-top-bottom.js"></script>
+
+<script src="/js/tools/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/tools/code-block.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/layouts/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/toc-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
+    
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
