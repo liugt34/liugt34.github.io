@@ -1,6 +1,6 @@
 ---
 title: 使用泛型转换强类型Id
-date: 2023-05-03 14:22:38 +0800
+date: 2023-05-22 16:32:38 +0800
 categories: [ASP.NET Core]
 tags: [aspnetcore]
 mermaid: true
