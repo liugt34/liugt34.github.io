@@ -9,18 +9,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2023/03/29/2023-03-29-【abp学习】-01-初始化一个abp项目/"/>
+    <link rel="canonical" href="http://example.com/2023/06/13/2023-06-13-使用arcgis engine导出地图图片/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="【ABP学习】01 初始化一个ABP项目">
+    <meta property="og:title" content="使用ArcGIS Engine将地图导出为图片">
     <meta property="og:description" content="Hexo Theme Redefine">
-    <meta property="og:url" content="http://example.com2023/03/29/2023-03-29-【ABP学习】-01-初始化一个ABP项目/">
+    <meta property="og:url" content="http://example.com2023/06/13/2023-06-13-使用ArcGIS Engine导出地图图片/">
     <meta property="og:image" content="/images/redefine-logo.svg">
     <meta property="og:site_name" content="葛覃谷">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="【ABP学习】01 初始化一个ABP项目">
+    <meta name="twitter:title" content="使用ArcGIS Engine将地图导出为图片">
     <meta name="twitter:description" content="Hexo Theme Redefine">
     <meta name="twitter:image" content="/images/redefine-logo.svg">
     <!--- Icon Part-->
@@ -31,7 +31,7 @@
     
     <title>
         
-            【ABP学习】01 初始化一个ABP项目 -
+            使用ArcGIS Engine将地图导出为图片 -
         
         葛覃谷
     </title>
@@ -211,7 +211,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">【ABP学习】01 初始化一个ABP项目</h1>
+                    <h1 class="article-title-regular">使用ArcGIS Engine将地图导出为图片</h1>
                 </div>
             
                 
@@ -233,8 +233,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2023-03-29 09:49:28</span>
-        <span class="mobile">2023-03-29 09:49</span>
+        <span class="pc">2023-06-13 09:55</span>
+        <span class="mobile">2023-06-13 09:55</span>
         <span class="hover-info">Created</span>
     </span>
     
@@ -252,11 +252,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/ASP-NET-Core/">ASP.NET Core</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/ASP-NET-Core/ABP/">ABP</a>&nbsp;
+                        <a href="/categories/ArcGIS/">ArcGIS</a>&nbsp;
                     </li>
                 
             </ul>
@@ -268,11 +264,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/aspnetcore/">aspnetcore</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/abp/">abp</a>&nbsp;
+                        <a href="/tags/arcgis/">arcgis</a>&nbsp;
                     </li>
                 
             </ul>
@@ -295,77 +287,58 @@
             
 
             <div class="article-content markdown-body">
-                <p>ABP是一个开源且文档友好的应用程序框架。ABP不仅仅是一个框架，它还提供了一个最徍实践的基于领域驱动设计(DDD)的体系结构模型，可以支持.net framework和.net core两种技术流派。本人不太喜欢这种洋葱框架，无奈用的人太多，还是决定抽出时间学习一下。卷起来…😅</p>
-<h1 id="安装-ABP-CLI"><a href="#安装-ABP-CLI" class="headerlink" title="安装 ABP CLI"></a>安装 ABP CLI</h1><p>如果之前没有安装过ABP CLI，请先安装</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool install -g Volo.Abp.Cli</span><br></pre></td></tr></table></figure></div>
+                <p>ArcGIS Engine本质就是在ArcObjects的基础上封装的 一组高级接口，其核心构建在ArcObjects之上，完全可扩展，也属于ArcGIS Engine的产品。开发者在桌面端或移动端应用程序中可以通过 <strong>.COM</strong> 的API、.NET、Java和C++调用ArcGIS Engine的GIS data，maps和geoprocessing 脚本。</p>
+<p>先梳理下需求：</p>
+<ol>
+<li>两个图层：底图为影像图，另一个为采样点图层</li>
+<li>以每个点为中心点，设置比例尺为1:500，尺寸为800x500</li>
+<li>当前视图范围内仅显示导出点，其他点隐藏</li>
+</ol>
+<p>安装 <strong>ArcObjectsSDKNet</strong> ，我这里使用的版本是10.4.1</p>
+<blockquote>
+<p>注意：ArcObjectsSKDNet仅支持 VS2013和VS2015版本，如果你的VS版本过高或过低都无法安装！真的奇葩~</p>
+</blockquote>
+<p>新建解决方案，引用程序集，在引用管理器中选择扩展，引入以下几个程序集。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/20240124162048.png"
+                      alt="20240124162048.png (781×542) (raw.githubusercontent.com)"
+                ></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ESRI.ArcGIS.AxControls</span><br><span class="line">ESRI.ArcGIS.Carto</span><br><span class="line">ESRI.ArcGIS.Controls</span><br><span class="line">ESRI.ArcGIS.Display</span><br><span class="line">ESRI.ArcGIS.Geodatabase</span><br><span class="line">ESRI.ArcGIS.Geometry</span><br><span class="line">ESRI.ArcGIS.Output</span><br><span class="line">ESRI.ArcGIS.System</span><br><span class="line">ESRI.ArcGIS.Version</span><br></pre></td></tr></table></figure></div>
 
-<p>安装完毕后，可以查看是否安装成功</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool list -g</span><br></pre></td></tr></table></figure></div>
+<p>右键选择这几个引用，查看属性，将 <strong>嵌入互操作类型</strong> 修改为 <em><strong>False</strong></em></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/20240124162321.png"
+                      alt="20240124162321.png (411×560) (raw.githubusercontent.com)"
+                ></p>
+<blockquote>
+<p>嵌入互操作类型设定为true时，实际上就是不引入互操作集，仅编译用户代码的程序集</p>
+<p>嵌入互操作类型设定为false时，实际就是需要从互操作程序集中获取 COM 类型的类型信息</p>
+</blockquote>
+<p>在Program.cs文件应用程序入口添加如下代码，绑定许可。</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RuntimeManager.Bind(ProductCode.EngineOrDesktop);</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329163535416.png"
-                      alt="image-20230329163535416"
-                ></p>
-<p>如果之前已经安装过ABP CLI，可对其进行更新</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool update -g volo.abp.cli</span><br></pre></td></tr></table></figure></div>
+<p>在Form1.cs中添加地图控件和license控件，其他组件不在此赘述，本文仅列出关键代码。</p>
+<p>定位到每个点，并设置比例尺</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> layer = <span class="keyword">this</span>.mapControl.get_Layer(<span class="number">0</span>) <span class="keyword">as</span> IFeatureLayer;</span><br><span class="line"><span class="keyword">var</span> featureClass = layer.FeatureClass</span><br><span class="line"><span class="comment">//仅显示当前点过滤器，很重要</span></span><br><span class="line"><span class="keyword">var</span> definition = layer <span class="keyword">as</span> IFeatureLayerDefinition;</span><br><span class="line">definition.DefinitionExpression = <span class="string">&quot;FID=&quot;</span> + i;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> feature = featureClass.GetFeature(i);</span><br><span class="line">name = i.ToString(<span class="string">&quot;D3&quot;</span>) + <span class="string">&quot;-&quot;</span> + feature.Value[<span class="number">2</span>] + <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> point = feature.Shape <span class="keyword">as</span> IPoint;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置比例尺</span></span><br><span class="line"><span class="keyword">this</span>.mapControl.MapScale = <span class="number">500</span>;</span><br><span class="line"><span class="comment">//定位中心点</span></span><br><span class="line"><span class="keyword">this</span>.mapControl.CenterAt(point);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> image = <span class="keyword">this</span>.Export(<span class="keyword">this</span>.mapControl.ActiveView, <span class="keyword">new</span> Size(<span class="number">800</span>, <span class="number">500</span>), <span class="keyword">this</span>.mapControl.Extent);</span><br><span class="line">image.Save(dir + <span class="string">&quot;\\&quot;</span> + name + <span class="string">&quot;.jpg&quot;</span>);</span><br><span class="line">image.Dispose();</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329164245467.png"
-                      alt="image-20230329164245467"
-                ></p>
-<h1 id="使用-ABP-CLI创建项目"><a href="#使用-ABP-CLI创建项目" class="headerlink" title="使用 ABP CLI创建项目"></a>使用 ABP CLI创建项目</h1><p>使用 apb new 创建项目</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abp new YourProjectName -t app -dbms=SqlServer -csf</span><br></pre></td></tr></table></figure></div>
 
-<p><strong><code>-csf</code></strong>     –create-solution-folder  表示创建新文件夹</p>
-<p><strong><code>-t</code></strong>          –template  表示模板，目前支持 <strong><code>app</code></strong>  <strong><code>app-nolayers</code></strong>  <strong><code>module</code></strong>  <strong><code>console</code></strong>  **<code>maui</code>**，默认 <code>app</code></p>
-<p><strong><code>-u</code></strong>          –ui 表示UI框架，目前支持 <strong><code>mvc</code></strong>  <strong><code>angular</code></strong>  <strong><code>blazor</code></strong>  <strong><code>blazor-server</code></strong>  <strong><code>none</code></strong> ，默认 mvc</p>
-<p><strong><code>-d</code></strong>          –database-provider 表示数据库框架，目前支持 <strong><code>ef</code></strong>  **<code>mongodb</code>**，默认 ef</p>
-<p><strong><code>-dbms</code></strong>    –database-management-system  表示数据库类型，目前支持 <strong><code>SqlServer</code></strong>   <strong><code>MySQL</code></strong>   <strong><code>SQLite</code></strong>   <strong><code>Oracle</code></strong>   <strong><code>PostgreSQL</code></strong> ，默认 SqlServer</p>
-<p><strong><code>-cs</code></strong>         –connection-string 设置数据库连接串</p>
-<p><strong><code>--theme</code></strong>  指定主题，目前支持 <code>leptonx-lite</code>  <code>basic</code> ，默认 leptonx-lite</p>
-<p>更多命令说明请参考官方文档  <a class="link"   target="_blank" rel="noopener" href="https://docs.abp.io/en/abp/latest/CLI" >CLI | Documentation Center | ABP.IO <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>运行命令，会在当前文件夹下面创建项目。</p>
+
+<p>导出方法</p>
+<div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Image <span class="title">Export</span>(<span class="params">IActiveView pActiveView, Size outRect, IEnvelope pEnvelope</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//赋值</span></span><br><span class="line">	tagRECT rect = <span class="keyword">new</span> tagRECT();</span><br><span class="line">	rect.left = rect.top = <span class="number">0</span>;</span><br><span class="line">	rect.right = outRect.Width;</span><br><span class="line">	rect.bottom = outRect.Height;</span><br><span class="line">	<span class="keyword">try</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 创建图像,为24位色</span></span><br><span class="line">		Image image = <span class="keyword">new</span> Bitmap(outRect.Width, outRect.Height); <span class="comment">//, System.Drawing.Imaging.PixelFormat.Format24bppRgb);</span></span><br><span class="line">		Graphics g = Graphics.FromImage(image);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 填充背景色(白色)</span></span><br><span class="line">		g.FillRectangle(Brushes.White, <span class="number">0</span>, <span class="number">0</span>, outRect.Width, outRect.Height);</span><br><span class="line"></span><br><span class="line">		<span class="built_in">int</span> dpi = (<span class="built_in">int</span>)(outRect.Width / pEnvelope.Width);</span><br><span class="line"></span><br><span class="line">		pActiveView.Output(g.GetHdc().ToInt32(), <span class="number">96</span>, <span class="keyword">ref</span> rect, pEnvelope, <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">		g.ReleaseHdc();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> image;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (Exception ex)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>结果如下</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329173352318.png"
-                      alt="image-20230329173352318"
+                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/20210124164855.jpg"
+                      alt="20210124164855.jpg"
                 ></p>
-<h1 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h1><p>用 Visual Studio 2022 打开解决方案</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329173623043.png"
-                      alt="image-20230329173623043"
-                ></p>
-<p>设置 <strong>ProductManagement.Web</strong> 为启动项，然后F5运行项目，发现项目无法运行，会报错</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329173744525.png"
-                      alt="image-20230329173744525"
-                ></p>
-<p><strong>原因是因为数据库尚未初始化。</strong> 找到项目 <strong>ProductManagement.DbMigrator</strong> 右键设置为启动项，F5运行，初始化数据库。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329173943437.png"
-                      alt="image-20230329173943437"
-                ></p>
-<p>运行完毕后，重新将 <strong>ProductManagement.Web</strong>设置为启动项，再次运行</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329174101656.png"
-                      alt="image-20230329174101656"
-                ></p>
-<p>登录系统，默认账号密码为  admin  &#x2F;  1q2w3E*</p>
-<p>至此，一个ABP项目初始化完毕。</p>
-<p><strong>文中案例来自 <a class="link"   target="_blank" rel="noopener" href="https://abp.io/books/mastering-abp-framework" >《Mastering ABP Framework》 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></strong></p>
 
             </div>
 
@@ -373,11 +346,11 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：【ABP学习】01 初始化一个ABP项目</li>
+        <li>Post title：使用ArcGIS Engine将地图导出为图片</li>
         <li>Post author：TomLiu</li>
-        <li>Create time：2023-03-29 09:49:28</li>
+        <li>Create time：2023-06-13 09:55:00</li>
         <li>
-            Post link：https://tomsweet.github.io/2023/03/29/2023-03-29-【ABP学习】-01-初始化一个ABP项目/
+            Post link：https://tomsweet.github.io/2023/06/13/2023-06-13-使用ArcGIS Engine导出地图图片/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -392,11 +365,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/aspnetcore/">#aspnetcore</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/abp/">#abp</a>&nbsp;
+                            <a href="/tags/arcgis/">#arcgis</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -407,29 +376,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2023/04/27/2023-04-27-%E3%80%90ABP%E5%AD%A6%E4%B9%A0%E3%80%91-02-%E4%BD%BF%E7%94%A8APB%E8%BF%9B%E8%A1%8CCRUD%E6%93%8D%E4%BD%9C/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">【ABP学习】02 使用ABP进行CRUD操作</span>
-                                    <span class="post-nav-item">Prev posts</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2023/03/13/2023-03-13-Use-CSharp-WinForms-Chart-Component/"
+                            href="/2023/06/08/2023-06-08-Postgresql%20JSON%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Use C# WinForms Chart Component</span>
+                                    <span class="post-nav-title-item">Postgresql jsonb类型按key排序问题</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -507,8 +461,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">【ABP学习】01 初始化一个ABP项目</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ABP-CLI"><span class="nav-text">安装 ABP CLI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-ABP-CLI%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-text">使用 ABP CLI创建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE"><span class="nav-text">运行项目</span></a></li></ol>
+        <div class="page-title">使用ArcGIS Engine将地图导出为图片</div>
+        
 
     </div>
 </div>
