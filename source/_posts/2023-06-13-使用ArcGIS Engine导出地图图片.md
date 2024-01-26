@@ -122,3 +122,84 @@ private Image Export(IActiveView pActiveView, Size outRect, IEnvelope pEnvelope)
 
 
 
+在网上搜索到另外一种方法，使用ArcEngine中ActiveView自带方法导出，代码如下
+
+```C#
+private void Export(IActiveView pView, Size outRect, string outPath)
+{
+	try
+	{
+		//参数检查
+		//根据给定的文件扩展名，来决定生成不同类型的对象
+		ESRI.ArcGIS.Output.IExport export = null;
+		if (outPath.EndsWith(".jpg"))
+		{
+			export = new ESRI.ArcGIS.Output.ExportJPEGClass();
+		}
+		else if (outPath.EndsWith(".tiff"))
+		{
+			export = new ESRI.ArcGIS.Output.ExportTIFFClass();
+		}
+		else if (outPath.EndsWith(".bmp"))
+		{
+			export = new ESRI.ArcGIS.Output.ExportBMPClass();
+		}
+		else if (outPath.EndsWith(".emf"))
+		{
+			export = new ESRI.ArcGIS.Output.ExportEMFClass();
+		}
+		else if (outPath.EndsWith(".png"))
+		{
+			export = new ESRI.ArcGIS.Output.ExportPNGClass();
+		}
+		else if (outPath.EndsWith(".gif"))
+		{
+			export = new ESRI.ArcGIS.Output.ExportGIFClass();
+		}
+
+		export.ExportFileName = outPath;
+		IEnvelope pEnvelope = pView.Extent;
+		//导出参数           
+		export.Resolution = 300;
+		tagRECT exportRect = new tagRECT();
+		exportRect.left = exportRect.top = 0;
+		exportRect.right = outRect.Width;
+		exportRect.bottom = (int)(exportRect.right * pEnvelope.Height / pEnvelope.Width);
+		ESRI.ArcGIS.Geometry.IEnvelope envelope = new ESRI.ArcGIS.Geometry.EnvelopeClass();
+		//输出范围
+		envelope.PutCoords(exportRect.left, exportRect.top, exportRect.right, exportRect.bottom);
+		export.PixelBounds = envelope;
+		//可用于取消操作
+		ITrackCancel pCancel = new CancelTrackerClass();
+		export.TrackCancel = pCancel;
+		pCancel.Reset();
+		//点击ESC键时，中止转出
+		pCancel.CancelOnKeyPress = true;
+		pCancel.CancelOnClick = false;
+		pCancel.ProcessMessages = true;
+		//获取handle
+		System.Int32 hDC = export.StartExporting();
+		//开始转出
+		pView.Output(hDC, (System.Int16)export.Resolution, ref exportRect, pEnvelope, pCancel);
+		bool bContinue = pCancel.Continue();
+		//捕获是否继续
+		if (bContinue)
+		{
+			export.FinishExporting();
+			export.Cleanup();
+		}
+		else
+		{
+			export.Cleanup();
+		}
+		bContinue = pCancel.Continue();
+	}
+	catch (Exception excep)
+	{
+		//错误信息提示
+	}
+}
+```
+
+
+
