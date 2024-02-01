@@ -1,7 +1,7 @@
 ---
 title: Postgresql Import Export Shapefile
 date: 2023-02-15 11:33:00 +0800
-categories: [Postgresql, PostGIS]
+categories: [PostgreSQL, PostGIS]
 tags: [shapefile]
 mermaid: true
 ---

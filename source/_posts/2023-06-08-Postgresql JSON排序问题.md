@@ -1,7 +1,7 @@
 ---
 title: Postgresql jsonb类型按key排序问题
 date: 2023-06-08 10:54:00 +0800
-categories: [Postgresql]
+categories: [PostgreSQL]
 tags: [postgresql]
 mermaid: true
 ---
