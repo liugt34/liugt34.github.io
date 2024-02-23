@@ -9,18 +9,18 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2023/03/29/2023-03-29-【abp学习】-01-初始化一个abp项目/"/>
+    <link rel="canonical" href="http://example.com/2023/07/06/2023-07-06-user-dotnet-core-write-a-terminal-command/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="【ABP学习】01 初始化一个ABP项目">
+    <meta property="og:title" content="使用dotnet core创建一个可执行的命令行程序">
     <meta property="og:description" content="Hexo Theme Redefine">
-    <meta property="og:url" content="http://example.com2023/03/29/2023-03-29-【ABP学习】-01-初始化一个ABP项目/">
+    <meta property="og:url" content="http://example.com2023/07/06/2023-07-06-User-dotnet-core-write-a-terminal-command/">
     <meta property="og:image" content="/images/redefine-logo.svg">
     <meta property="og:site_name" content="葛覃谷">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="【ABP学习】01 初始化一个ABP项目">
+    <meta name="twitter:title" content="使用dotnet core创建一个可执行的命令行程序">
     <meta name="twitter:description" content="Hexo Theme Redefine">
     <meta name="twitter:image" content="/images/redefine-logo.svg">
     <!--- Icon Part-->
@@ -31,7 +31,7 @@
     
     <title>
         
-            【ABP学习】01 初始化一个ABP项目 -
+            使用dotnet core创建一个可执行的命令行程序 -
         
         葛覃谷
     </title>
@@ -211,7 +211,7 @@
             
             
                 <div class="article-title">
-                    <h1 class="article-title-regular">【ABP学习】01 初始化一个ABP项目</h1>
+                    <h1 class="article-title-regular">使用dotnet core创建一个可执行的命令行程序</h1>
                 </div>
             
                 
@@ -233,8 +233,8 @@
                             <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="pc">2023-03-29 09:49:28</span>
-        <span class="mobile">2023-03-29 09:49</span>
+        <span class="pc">2023-07-06 07:37</span>
+        <span class="mobile">2023-07-06 07:37</span>
         <span class="hover-info">Created</span>
     </span>
     
@@ -252,11 +252,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/ASP-NET-Core/">ASP.NET Core</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/ASP-NET-Core/ABP/">ABP</a>&nbsp;
+                        <a href="/categories/C/">C#</a>&nbsp;
                     </li>
                 
             </ul>
@@ -268,11 +264,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/aspnetcore/">aspnetcore</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/abp/">abp</a>&nbsp;
+                        <a href="/tags/dotnet/">dotnet</a>&nbsp;
                     </li>
                 
             </ul>
@@ -295,77 +287,33 @@
             
 
             <div class="article-content markdown-body">
-                <p>ABP是一个开源且文档友好的应用程序框架。ABP不仅仅是一个框架，它还提供了一个最徍实践的基于领域驱动设计(DDD)的体系结构模型，可以支持.net framework和.net core两种技术流派。本人不太喜欢这种洋葱框架，无奈用的人太多，还是决定抽出时间学习一下。卷起来…😅</p>
-<h1 id="安装-ABP-CLI"><a href="#安装-ABP-CLI" class="headerlink" title="安装 ABP CLI"></a>安装 ABP CLI</h1><p>如果之前没有安装过ABP CLI，请先安装</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool install -g Volo.Abp.Cli</span><br></pre></td></tr></table></figure></div>
+                <h1 id="为何要做命令行程序"><a href="#为何要做命令行程序" class="headerlink" title="为何要做命令行程序"></a>为何要做命令行程序</h1><p>对于大多数开发者而言，图形化工具（GUI）更简单更直观，比如比如图形化的Git工具，各类IDE等等。那为什么还需要做命令行程序呢？</p>
+<p>我个人认为有以下几点。</p>
+<ol>
+<li>命令行程序脱离了GUI，更节省系统消耗</li>
+<li>兼容不同的操作系统，跨平台可移植性强</li>
+<li>可以方便不同的开发语言调用，无需再去开发烦人的API</li>
+</ol>
+<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><p>今天突然接到客户的临时需求，说是要将一个文件夹下的图片全部合并成一个PDF文件。之前这个系统是用nodejs写的，然后nodejs上并没有太好的解决方案。本来是想着用dotnet core写一个API服务，但是API一是要去访问nodejs运行目录下的文件，二是开发人员又不想花太多精力去做API代理。于是就想到做一个控制它命令，让nodejs直接调用命令行来处理。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="第一步：创建项目并安装System-CommandLine"><a href="#第一步：创建项目并安装System-CommandLine" class="headerlink" title="第一步：创建项目并安装System.CommandLine"></a>第一步：创建项目并安装System.CommandLine</h2><p>微软推出了一款命令行库  <a class="link"   target="_blank" rel="noopener" href="https://www.nuget.org/packages/System.CommandLine" >NuGet Gallery | System.CommandLine <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 用来解析命令行中所有的参数。 我们新建一个dotnet 6.0项目，然后引用该库</p>
+<p>当前还是预览版，所以需要添加版本号</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet add package System.CommandLine --version 2.0.0-beta4.22272.1</span><br></pre></td></tr></table></figure></div>
 
-<p>安装完毕后，可以查看是否安装成功</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool list -g</span><br></pre></td></tr></table></figure></div>
+<p>创建项目的时候注意 <strong>勾选 Do not use top-level statements</strong> ，否则无法生成main函数。</p>
+<h2 id="第二步：定义命令"><a href="#第二步：定义命令" class="headerlink" title="第二步：定义命令"></a>第二步：定义命令</h2><p>定义我们想用的命令格式</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pdftool merge -d E:\<span class="built_in">test</span> -n=test.pdf</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329163535416.png"
-                      alt="image-20230329163535416"
-                ></p>
-<p>如果之前已经安装过ABP CLI，可对其进行更新</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet tool update -g volo.abp.cli</span><br></pre></td></tr></table></figure></div>
+<ol>
+<li>pdftool 是命令名称</li>
+<li>merge  是子命令</li>
+<li>-d 是参数 –dir 的简写，表示图片所在文件夹</li>
+<li>-n 是参数 –name的简写，表示导出pdf文件的名称</li>
+</ol>
+<h2 id="第三步：编写代码"><a href="#第三步：编写代码" class="headerlink" title="第三步：编写代码"></a>第三步：编写代码</h2><div class="highlight-container" data-rel="C#"><figure class="iseeu highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">async</span> Task&lt;<span class="built_in">int</span>&gt; <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 定义 Root command</span></span><br><span class="line">    <span class="keyword">var</span> command = <span class="keyword">new</span> RootCommand(<span class="string">&quot;This is a tool for pdf. has functions like merge images to pdf,import pdf page to images&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 定义子命令</span></span><br><span class="line">    <span class="keyword">var</span> mergeCommand = <span class="keyword">new</span> Command(<span class="string">&quot;merge&quot;</span>, <span class="string">&quot;Merge Images to pdf,support jpg and png only&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 定义参数</span></span><br><span class="line">    <span class="keyword">var</span> dirOption = <span class="keyword">new</span> Option&lt;<span class="built_in">string</span>&gt;(<span class="string">&quot;--dir&quot;</span>, <span class="string">&quot;The images directory path&quot;</span>);</span><br><span class="line">    dirOption.IsRequired = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//参数简写</span></span><br><span class="line">    dirOption.AddAlias(<span class="string">&quot;-d&quot;</span>); </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//定义参数校验，例如:检验文件夹是否存在</span></span><br><span class="line">    dirOption.AddValidator((option) =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> dir = option.GetValueForOption&lt;<span class="built_in">string</span>&gt;(dirOption);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!Directory.Exists(dir))</span><br><span class="line">        &#123;</span><br><span class="line">            option.ErrorMessage = <span class="string">$&quot;The images directory &#x27;<span class="subst">&#123;dir&#125;</span>&#x27; doesn&#x27;t exist&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    mergeCommand.AddOption(dirOption);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//同理添加参数 name</span></span><br><span class="line">    ...</span><br><span class="line">        </span><br><span class="line">    <span class="comment">//添加该命令处理方法</span></span><br><span class="line">    mergeCommand.SetHandler(</span><br><span class="line">        (dir, name) =&gt;  </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//处理方法，这里如何处理PDF大家可以自定义</span></span><br><span class="line">            MergeImagesInDirectory(dir, name);</span><br><span class="line">        &#125;,</span><br><span class="line">        dirOption, nameOption);</span><br><span class="line"></span><br><span class="line">    command.AddCommand(mergeCommand);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//等待调用</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span> command.InvokeAsync(args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329164245467.png"
-                      alt="image-20230329164245467"
-                ></p>
-<h1 id="使用-ABP-CLI创建项目"><a href="#使用-ABP-CLI创建项目" class="headerlink" title="使用 ABP CLI创建项目"></a>使用 ABP CLI创建项目</h1><p>使用 apb new 创建项目</p>
-<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abp new YourProjectName -t app -dbms=SqlServer -csf</span><br></pre></td></tr></table></figure></div>
 
-<p><strong><code>-csf</code></strong>     –create-solution-folder  表示创建新文件夹</p>
-<p><strong><code>-t</code></strong>          –template  表示模板，目前支持 <strong><code>app</code></strong>  <strong><code>app-nolayers</code></strong>  <strong><code>module</code></strong>  <strong><code>console</code></strong>  **<code>maui</code>**，默认 <code>app</code></p>
-<p><strong><code>-u</code></strong>          –ui 表示UI框架，目前支持 <strong><code>mvc</code></strong>  <strong><code>angular</code></strong>  <strong><code>blazor</code></strong>  <strong><code>blazor-server</code></strong>  <strong><code>none</code></strong> ，默认 mvc</p>
-<p><strong><code>-d</code></strong>          –database-provider 表示数据库框架，目前支持 <strong><code>ef</code></strong>  **<code>mongodb</code>**，默认 ef</p>
-<p><strong><code>-dbms</code></strong>    –database-management-system  表示数据库类型，目前支持 <strong><code>SqlServer</code></strong>   <strong><code>MySQL</code></strong>   <strong><code>SQLite</code></strong>   <strong><code>Oracle</code></strong>   <strong><code>PostgreSQL</code></strong> ，默认 SqlServer</p>
-<p><strong><code>-cs</code></strong>         –connection-string 设置数据库连接串</p>
-<p><strong><code>--theme</code></strong>  指定主题，目前支持 <code>leptonx-lite</code>  <code>basic</code> ，默认 leptonx-lite</p>
-<p>更多命令说明请参考官方文档  <a class="link"   target="_blank" rel="noopener" href="https://docs.abp.io/en/abp/latest/CLI" >CLI | Documentation Center | ABP.IO <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<p>运行命令，会在当前文件夹下面创建项目。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329173352318.png"
-                      alt="image-20230329173352318"
-                ></p>
-<h1 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h1><p>用 Visual Studio 2022 打开解决方案</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329173623043.png"
-                      alt="image-20230329173623043"
-                ></p>
-<p>设置 <strong>ProductManagement.Web</strong> 为启动项，然后F5运行项目，发现项目无法运行，会报错</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329173744525.png"
-                      alt="image-20230329173744525"
-                ></p>
-<p><strong>原因是因为数据库尚未初始化。</strong> 找到项目 <strong>ProductManagement.DbMigrator</strong> 右键设置为启动项，F5运行，初始化数据库。</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329173943437.png"
-                      alt="image-20230329173943437"
-                ></p>
-<p>运行完毕后，重新将 <strong>ProductManagement.Web</strong>设置为启动项，再次运行</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://raw.githubusercontent.com/liugt34/imagegallery/main/image-20230329174101656.png"
-                      alt="image-20230329174101656"
-                ></p>
-<p>登录系统，默认账号密码为  admin  &#x2F;  1q2w3E*</p>
-<p>至此，一个ABP项目初始化完毕。</p>
-<p><strong>文中案例来自 <a class="link"   target="_blank" rel="noopener" href="https://abp.io/books/mastering-abp-framework" >《Mastering ABP Framework》 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></strong></p>
+
+<p>完整代码已上传github   <a class="link"   target="_blank" rel="noopener" href="https://github.com/liugt34/pdftool" >liugt34&#x2F;pdftool (github.com) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 
             </div>
 
@@ -373,11 +321,11 @@
                 <div class="post-copyright-info">
                     <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：【ABP学习】01 初始化一个ABP项目</li>
+        <li>Post title：使用dotnet core创建一个可执行的命令行程序</li>
         <li>Post author：TomLiu</li>
-        <li>Create time：2023-03-29 09:49:28</li>
+        <li>Create time：2023-07-06 07:37:00</li>
         <li>
-            Post link：https://tomsweet.github.io/2023/03/29/2023-03-29-【ABP学习】-01-初始化一个ABP项目/
+            Post link：https://tomsweet.github.io/2023/07/06/2023-07-06-User-dotnet-core-write-a-terminal-command/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -392,11 +340,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/aspnetcore/">#aspnetcore</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/abp/">#abp</a>&nbsp;
+                            <a href="/tags/dotnet/">#dotnet</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -407,29 +351,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                            rel="prev"
-                            href="/2023/04/27/2023-04-27-%E3%80%90ABP%E5%AD%A6%E4%B9%A0%E3%80%91-02-%E4%BD%BF%E7%94%A8APB%E8%BF%9B%E8%A1%8CCRUD%E6%93%8D%E4%BD%9C/"
-                            >
-                                <span class="left arrow-icon flex-center">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </span>
-                                <span class="title flex-center">
-                                    <span class="post-nav-title-item">【ABP学习】02 使用ABP进行CRUD操作</span>
-                                    <span class="post-nav-item">Prev posts</span>
-                                </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                             rel="next"
-                            href="/2023/03/13/2023-03-13-Use-CSharp-WinForms-Chart-Component/"
+                            href="/2023/06/29/2023-06-29-PostgreSQL-Master-Slave-Replication/"
                             >
                                 <span class="title flex-center">
-                                    <span class="post-nav-title-item">Use C# WinForms Chart Component</span>
+                                    <span class="post-nav-title-item">PostgreSQL主从复制</span>
                                     <span class="post-nav-item">Next posts</span>
                                 </span>
                                 <span class="right arrow-icon flex-center">
@@ -507,8 +436,8 @@
                 <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">【ABP学习】01 初始化一个ABP项目</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ABP-CLI"><span class="nav-text">安装 ABP CLI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-ABP-CLI%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-text">使用 ABP CLI创建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE"><span class="nav-text">运行项目</span></a></li></ol>
+        <div class="page-title">使用dotnet core创建一个可执行的命令行程序</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BD%95%E8%A6%81%E5%81%9A%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="nav-text">为何要做命令行程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B"><span class="nav-text">案例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%B9%B6%E5%AE%89%E8%A3%85System-CommandLine"><span class="nav-text">第一步：创建项目并安装System.CommandLine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%AE%9A%E4%B9%89%E5%91%BD%E4%BB%A4"><span class="nav-text">第二步：定义命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%BC%96%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-text">第三步：编写代码</span></a></li></ol></li></ol>
 
     </div>
 </div>
